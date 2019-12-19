@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import FishingSpotsAPI from './components/FishingSpotsAPI';
+import {Link, Route} from 'react-router-dom'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        <Link to='/'><button>Home</button></Link>
+        <Link to='/fishing-spots'><button>Fishing Spots</button></Link>
+      </nav>
+      <Route exact path='/'/>
+      <Route path='/fishing-spots' component={FishingSpotsAPI}/>
     </div>
   );
 }
