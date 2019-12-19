@@ -2,31 +2,28 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 
-const Login = () => {
-    const [credentials, setCredentials] = useState({
+const SignUp = (props) => {
+    const [user, setUser] = useState({
         username: "",
         password: ""
-    })
+    });
 
     const handleChanges = e => {
-        setCredentials({
-            ...credentials,
+        setUser({
+            ...user,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmitLogin = e => {
+    const handleSignUpSubmit = e => {
         e.preventDefault();
-        axios
-            .post("https://fish-friends-api.herokuapp.com/api/auth/login", credentials)
-            .then(res => {
-                console.log("handleSubmitLogin post results: ", res);
-                //// STILL NEED TO ROUTE TO PRIVATE ROUTE ////
-            })
-            .catch(err => console.log("handleSubmitLogin Error", err));
-    }
-
-
+        console.log("handleSignUpSubmit users to post with axios", users);
+        axios  
+            .post("https://fish-friends-api.herokuapp.com/api/auth/register", user)
+            .then(localStorage.setItem('token', 'users'))
+            .then(props.history.push('/'))
+            .catch(console.log("Something went wrong when submitting the SignUp form", err))
+    };
 
     return (
         <div>
@@ -46,14 +43,14 @@ const Login = () => {
                     onChange={handleChanges}
                 />
 
-                <button type="submit">Log In</button>
+                <button type="submit">Sign Up</button>
             </form>
             <div>
-                <p>Don't have an account?</p>
-                <Link to="/signup">Sign Up</Link>
+                <p>Already have an account?</p>
+                <Link to="/login">Log In</Link>
             </div>
         </div>
-    )
-};
 
-export default Login;
+    )
+
+}
