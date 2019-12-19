@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import FishingSpotsCard from './FishingSpotsCard';
+import LocationSearchForm from './LocationSearchForm';
 
 
 
@@ -8,26 +9,53 @@ import axios from 'axios';
     const FishingSpotsAPI =() => {
         
         const [info, setInfo] = useState([]);
+        const [searchTerm, setSearchTerm] = useState("");
+        //eslint-disable-next-line
+        const [searchResults, setSearchResults] = useState(info);
+      
+        const handleChange = event => {
+          setSearchTerm(event.target.value);
+        };
 
-        useEffect(() => {
+            useEffect(() => {
+        const getSearch = () =>{
             axios
-                .get('') //no API to work with just yet...doing push for the night will be searching for a new one in the am
-                .then(data => {
-                    console.log('API Is Here: ', data.data); 
-                    setInfo(data.data);
+                .get('https://data.ny.gov/resource/jcxg-7gnm.json/') 
+                .then(response => {
+                    console.log('API Is Here: ', response.data[`500...545`]); 
+                    setInfo(response.data);
                 })
                 .catch(error => {
                     console.log('Whoops go back, thats an error!', error);
                 });
-            }, []);
+            };
+        
+            const results = info.filter(stat => {
+            return stat.fish_spec.toLowerCase().includes(searchTerm.toLowerCase());
+            });
+        
+            getSearch();
+            setSearchResults(results);
+            //eslint-disable-next-line
+        }, [searchTerm]);
             console.log(info);
 
         return(
+            <section>
             <div>
-                This Page Is Left Intentionally Blank
+                <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+                {searchResults.map(data => (
+                <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc}/>
+        ))}
+            </div> 
+             <div>
+                {info.map(data=> (
+                <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc}/>
+            ))}
             </div>
+            </section>
         );
     }
         export default FishingSpotsAPI;
 
-       // https://cors-anywhere.herokuapp.com/ (Use for CORS Error if Needed)
+       // https://cors-anywhere.herokuapp.com/
