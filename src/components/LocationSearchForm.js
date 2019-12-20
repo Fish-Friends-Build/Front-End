@@ -1,11 +1,13 @@
 import React from "react";
 
 
+
+
 const LocationSearchForm = ({ searchTerm, handleChange }) =>{
     return (
     <section>
         <h3>Search By Fish Type</h3>
-        <form>
+        <form classN>
           <input
             type="text"
             name="search"
