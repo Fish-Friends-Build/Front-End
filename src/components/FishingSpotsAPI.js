@@ -22,7 +22,7 @@ import LocationSearchForm from './LocationSearchForm';
             axios
                 .get('https://data.ny.gov/resource/jcxg-7gnm.json/') 
                 .then(response => {
-                    console.log('API Is Here: ', response.data[`500...545`]); 
+                    console.log('API Is Here: ', response.data); 
                     setInfo(response.data);
                 })
                 .catch(error => {
@@ -50,7 +50,8 @@ import LocationSearchForm from './LocationSearchForm';
             </div> 
              <div>
                 {info.map(data=> (
-                <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc}/>
+                <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl}
+                />
             ))}
             </div>
             </section>
