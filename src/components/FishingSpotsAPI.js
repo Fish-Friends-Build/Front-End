@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FishingSpotsCard from './FishingSpotsCard';
+import {Container, Row} from 'reactstrap'
 import LocationSearchForm from './LocationSearchForm';
 
 
@@ -30,7 +31,8 @@ const FishingSpotsAPI = () => {
         };
 
         const results = info.filter(stat => {
-            return stat.fish_spec.toLowerCase().includes(searchTerm.toLowerCase());
+            return stat.fish_spec.toLowerCase().includes(searchTerm.toLowerCase())||stat.name.toLowerCase().includes(searchTerm.toLowerCase())||
+            stat.county.toLowerCase().includes(searchTerm.toLowerCase());
         });
 
         getSearch();
@@ -43,19 +45,25 @@ const FishingSpotsAPI = () => {
         <section>
             <div>
                 <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-                {searchResults.map(data => (
-                    <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} />
-                ))}
+                    <Container>
+                    <Row>
+                    {searchResults.map(data => (
+                        <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl}/>
+                    ))}
+                    </Row>
+                    </Container>
+                
             </div>
             <div>
+                <Container>
+                <Row>
                 {info.map(data => (
-                    <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl}
-                    />
+                    <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl}/>
                 ))}
+                </Row>
+                </Container>
             </div>
         </section>
     );
 }
 export default FishingSpotsAPI;
-
-       // https://cors-anywhere.herokuapp.com/
