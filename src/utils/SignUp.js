@@ -28,7 +28,7 @@ const SignUp = (props) => {
 
     return (
         <div>
-            <form onClick={handleSignUpSubmit}>
+            <form onSubmit={handleSignUpSubmit}>
                 <input
                     placeholder="Username"
                     type="text"
@@ -39,7 +39,7 @@ const SignUp = (props) => {
                 <input
                     placeholder="Password"
                     type="text"
-                    name="username"
+                    name="password"
                     value={user.password}
                     onChange={handleChanges}
                 />

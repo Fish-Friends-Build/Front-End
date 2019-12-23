@@ -1,12 +1,15 @@
 import React from 'react';
-import {Link, Route, Switch} from 'react-router-dom'
+import {Link
+    // ,    Route, Switch
+} from 'react-router-dom'
 
 
-import Login from '../utils/Login';
-import SignUp from '../utils/SignUp';
-import PrivateRoute from './PrivateRoute';
-import FishingSpotsAPI from './FishingSpotsAPI';
-import UserJournalEntries from './UserJournalEntries';
+
+// import Login from '../utils/Login';
+// import SignUp from '../utils/SignUp';
+// import PrivateRoute from './PrivateRoute';
+// import FishingSpotsAPI from './FishingSpotsAPI';
+// import UserJournalEntries from './UserJournalEntries';
 
 const Navigation = (props) => {
     return (
