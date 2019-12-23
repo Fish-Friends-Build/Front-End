@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 
+import SignUp from './SignUp';
+
 const Login = () => {
     const [credentials, setCredentials] = useState({
         username: "",
@@ -51,6 +53,7 @@ const Login = () => {
             <div>
                 <p>Don't have an account?</p>
                 <Link to="/signup">Sign Up</Link>
+                <Route exact path="/signup" component={SignUp}/>
             </div>
         </div>
     )
