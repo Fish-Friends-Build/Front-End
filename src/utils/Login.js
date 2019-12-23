@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 
-const Login = () => {
+import SignUp from './SignUp';
+
+const Login = (props) => {
     const [credentials, setCredentials] = useState({
         username: "",
         password: ""
@@ -22,6 +24,9 @@ const Login = () => {
             .then(res => {
                 console.log("handleSubmitLogin post results: ", res);
                 //// STILL NEED TO ROUTE TO PRIVATE ROUTE ////
+                localStorage.setItem("token", res.data.token);
+                props.history.push("/fishing-spots");
+
             })
             .catch(err => console.log("handleSubmitLogin Error", err));
     }
@@ -30,7 +35,7 @@ const Login = () => {
 
     return (
         <div>
-            <form onClick={handleSubmitLogin}>
+            <form onSubmit={handleSubmitLogin}>
                 <input
                     placeholder="Username"
                     type="text"
@@ -41,7 +46,7 @@ const Login = () => {
                 <input
                     placeholder="Password"
                     type="text"
-                    name="username"
+                    name="password"
                     value={credentials.password}
                     onChange={handleChanges}
                 />
@@ -51,6 +56,7 @@ const Login = () => {
             <div>
                 <p>Don't have an account?</p>
                 <Link to="/signup">Sign Up</Link>
+                <Route exact path="/signup" component={SignUp}/>
             </div>
         </div>
     )

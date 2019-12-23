@@ -1,13 +1,15 @@
 import React from "react";
 
-
+const handleSubmit = (e) => {
+  e.preventDefault();
+}
 
 
 const LocationSearchForm = ({ searchTerm, handleChange }) =>{
     return (
     <section>
         <h3>Search By Fish Type</h3>
-        <form classN>
+        <form onSubmit={handleSubmit} className="location-search-form">
           <input
             type="text"
             name="search"

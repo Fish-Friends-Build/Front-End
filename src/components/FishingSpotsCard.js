@@ -3,9 +3,14 @@ import StarRating from './StarRating';
 
 
 const FishingSpotsCard = ({name, county, bestFish, access, pdf}) =>{
-
-
-
+    
+    const moreInfo = pdf => {
+        if (pdf === undefined) {
+            return (<div/>)
+        } else {
+            return(<a rel="noopener noreferrer" target="_blank" href={pdf.url}>More Info</a>)
+        }
+    }
 
     return(
         <div>
@@ -14,6 +19,7 @@ const FishingSpotsCard = ({name, county, bestFish, access, pdf}) =>{
             <p>Catches Available: {bestFish}</p>
             <p>Access Rights: {access}</p>
             {/* <a rel="noopener noreferrer" target="_blank" href={pdf}>More Info</a> */}
+            {moreInfo(pdf)}
             <StarRating totalStars={5} />
         </div>
         
