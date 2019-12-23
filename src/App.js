@@ -5,12 +5,13 @@ import {
 import './App.css';
 
 import Navigation from './components/Navigation';
-
+//////////////////////////////////////////////////////
 import Login from './utils/Login';
 import SignUp from './utils/SignUp';
 import PrivateRoute from './components/PrivateRoute';
 import FishingSpotsAPI from './components/FishingSpotsAPI';
 import UserJournalEntries from './components/UserJournalEntries';
+
 
 
 // function App() {
@@ -26,16 +27,18 @@ import UserJournalEntries from './components/UserJournalEntries';
 //   );
 // }
 
+
 function App() {
   return (
     <div className="App">
       <Navigation />
+
       <Switch>
         <PrivateRoute exact path="/fishing-spots" component={FishingSpotsAPI} />
         <PrivateRoute exact path="/journal-entries" component={UserJournalEntries} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route componnet={Login} />
+        <Route component={Login} />
       </Switch>
     </div>
   )

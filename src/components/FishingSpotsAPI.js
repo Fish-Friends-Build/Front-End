@@ -5,58 +5,57 @@ import LocationSearchForm from './LocationSearchForm';
 
 
 
+const FishingSpotsAPI = () => {
 
-    const FishingSpotsAPI =() => {
-        
-        const [info, setInfo] = useState([]);
-        const [searchTerm, setSearchTerm] = useState("");
-        //eslint-disable-next-line
-        const [searchResults, setSearchResults] = useState(info);
-      
-        const handleChange = event => {
-          setSearchTerm(event.target.value);
-        };
+    const [info, setInfo] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    //eslint-disable-next-line
+    const [searchResults, setSearchResults] = useState(info);
 
-            useEffect(() => {
-        const getSearch = () =>{
+    const handleChange = event => {
+        setSearchTerm(event.target.value);
+    };
+
+    useEffect(() => {
+        const getSearch = () => {
             axios
-                .get('https://data.ny.gov/resource/jcxg-7gnm.json/') 
+                .get('https://data.ny.gov/resource/jcxg-7gnm.json/')
                 .then(response => {
-                    console.log('API Is Here: ', response.data); 
+                    console.log('API Is Here: ', response.data);
                     setInfo(response.data);
                 })
                 .catch(error => {
                     console.log('Whoops go back, thats an error!', error);
                 });
-            };
-        
-            const results = info.filter(stat => {
-            return stat.fish_spec.toLowerCase().includes(searchTerm.toLowerCase());
-            });
-        
-            getSearch();
-            setSearchResults(results);
-            //eslint-disable-next-line
-        }, [searchTerm]);
-            console.log(info);
+        };
 
-        return(
-            <section>
+        const results = info.filter(stat => {
+            return stat.fish_spec.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+
+        getSearch();
+        setSearchResults(results);
+        //eslint-disable-next-line
+    }, [searchTerm]);
+    console.log(info);
+
+    return (
+        <section>
             <div>
                 <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
                 {searchResults.map(data => (
-                <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc}/>
-        ))}
-            </div> 
-             <div>
-                {info.map(data=> (
-                <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl}
-                />
-            ))}
+                    <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} />
+                ))}
             </div>
-            </section>
-        );
-    }
-        export default FishingSpotsAPI;
+            <div>
+                {info.map(data => (
+                    <FishingSpotsCard name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl}
+                    />
+                ))}
+            </div>
+        </section>
+    );
+}
+export default FishingSpotsAPI;
 
        // https://cors-anywhere.herokuapp.com/
