@@ -1,5 +1,4 @@
 import React from "react";
-
 const handleSubmit = (e) => {
   e.preventDefault();
 }
@@ -8,7 +7,7 @@ const handleSubmit = (e) => {
 const LocationSearchForm = ({ searchTerm, handleChange }) =>{
     return (
     <section>
-        <h3>Search By Fish Type</h3>
+        <h3>Search</h3>
         <form onSubmit={handleSubmit} className="location-search-form">
           <input
             type="text"
