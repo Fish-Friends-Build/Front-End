@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import './App.css';
 
+import { Store } from './components/Store';
+
 import Navigation from './components/Navigation';
 //////////////////////////////////////////////////////
 import Login from './utils/Login';
@@ -13,6 +15,7 @@ import SignUp from './utils/SignUp';
 import PrivateRoute from './components/PrivateRoute';
 import FishingSpotsAPI from './components/FishingSpotsAPI';
 import UserJournalEntries from './components/UserJournalEntries';
+import JournalPost from './components/JournalPost';
 
 // function App() {
 //   return (
@@ -28,6 +31,8 @@ import UserJournalEntries from './components/UserJournalEntries';
 // }
 
 function App() {
+  const store = useContext(Store);
+
   return (
     <div className="App">
       <Navigation />
@@ -39,6 +44,7 @@ function App() {
           path="/journal-entries"
           component={UserJournalEntries}
         />
+        <PrivateRoute exact path="/journal-post" component={JournalPost} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route component={Login} />
