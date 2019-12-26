@@ -16,5 +16,7 @@ function reducer(state, action) {
 }
 
 export function StoreProvider(props) {
-  return <Store.Provider value={initialState}>{props.children}</Store.Provider>;
+  return (
+    <Store.Provider value={(state, dispatch)}>{props.children}</Store.Provider>
+  );
 }

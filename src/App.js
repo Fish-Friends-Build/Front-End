@@ -31,7 +31,12 @@ import JournalPost from './components/JournalPost';
 // }
 
 function App() {
-  const store = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+
+  //are we fetching data at App.js? Or at journal entries?
+  // useEffect(()=>{fetchDataAction()})
+  // const fetchDataAction = Axios.get().then().catch(error)
+  //return dispatch({type: 'FETCH_DATA', payload: ''})
 
   return (
     <div className="App">
