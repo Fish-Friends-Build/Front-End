@@ -74,7 +74,8 @@ const JournalPost = props => {
       <FormGroup tag="fieldset">
         <FormGroup check>
           <Label check>
-            <Input type="radio" name="bankOrBoat" /> Bank Or Boat
+            <Input type="radio" name="bankOrBoat" value="Bank"/> Bank Or Boat
+            <Input type="radio" name="bankOrBoat" value="Boat"/>
           </Label>
         </FormGroup>
       </FormGroup>
