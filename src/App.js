@@ -37,7 +37,7 @@ function App() {
               path="/journal-entries"
               component={UserJournalEntries}
             />
-            <PrivateRoute exact path="/journal-post" component={JournalPost} />
+            <PrivateRoute exact path="/journal-post/:name" component={JournalPost} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route component={Login} />
