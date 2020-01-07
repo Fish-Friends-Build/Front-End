@@ -1,41 +1,46 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { JournalPostContext } from '../contexts/JournalPostContext';
+// import { FishingSpotsContext } from '../contexts/FishingSpotsContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const JournalPost = props => {
-  // const { post, deletePost } = useContext(JournalPostContext);
+  const { JournalPostData, setJournalPostData } = useContext(JournalPostContext);
+  // const { FishingSpotsData } = useContext(FishingSpotsContext)
 
-  const [journal, setJournal] = useState({
-    numFishCaught: [],
-    date: '',
-    timeOfDay: '',
-    location: '',
-    fishType: [''],
-    bait: '',
-    bankOrBoat: '',
-    waterType: '',
-    notes: ''
-  });
+  // const [journal, setJournal] = useState({
+  //   numFishCaught: [],
+  //   date: '',
+  //   timeOfDay: '',
+  //   location: '',
+  //   fishType: [''],
+  //   bait: '',
+  //   bankOrBoat: '',
+  //   waterType: '',
+  //   notes: ''
+  // });
 
   const handleChanges = e => {
-    setJournal({ journal, [e.target.name]: e.target.value });
+    setJournalPostData({ ...JournalPostData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   axiosWithAuth()
-  //     .post('/api/journals', post)
-  //     .then(res => {
-  //       props.history.push('/');
-  //     })
-  //     .catch(err => {
-  //       console.log('unable to post', err);
-  //     });
-  // };
+  const handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post('/journals', {...JournalPostData, location: props.match.params.name})
+      .then(res => {
+        console.log(res);
+        props.history.push('/');
+      })
+      .catch(err => {
+        console.log('unable to post', err);
+      });
+  };
   return (
-    <Form>
+    <>
+    <h3>{props.match.params.name}</h3>
+    <Form onChange={handleChanges} onSubmit={handleSubmit}>
       <FormGroup>
         <Label for="exampleSelect">Number Of Fish Caught</Label>
         <Input type="number" name="numFishCaught" id="numFishCaught" />
@@ -44,15 +49,7 @@ const JournalPost = props => {
         <Label for="exampleDatetime">Datetime</Label>
         <Input type="datetime-local" name="date" id="date" />
       </FormGroup>
-      <FormGroup>
-        <Label for="location">Location</Label>
-        <Input
-          type="text"
-          name="location"
-          id="location"
-          placeholder="How Did I Get There Again?"
-        />
-      </FormGroup>
+
       <FormGroup>
         <Label for="fishType">Type Of Fish</Label>
         <Input
@@ -74,13 +71,15 @@ const JournalPost = props => {
       <FormGroup tag="fieldset">
         <FormGroup check>
           <Label check>
-            <Input type="radio" name="bankOrBoat" /> Bank Or Boat
+            <Input type="radio" name="bankOrBoat" value="Bank"/> Bank Or Boat
+            <Input type="radio" name="bankOrBoat" value="Boat"/>
           </Label>
         </FormGroup>
       </FormGroup>
       <FormGroup check>
         <Label check>
-          <Input type="radio" name="waterType" /> FreshWater Or Saltwater
+          <Input type="radio" name="waterType" value="FreshWater" /> Fresh Water Or Salt Water
+        <Input type="radio" name="waterType" value="SaltWater"/>
         </Label>
       </FormGroup>
       <FormGroup>
@@ -103,6 +102,7 @@ const JournalPost = props => {
 
       <Button>Submit</Button>
     </Form>
+    </>
   );
 };
 
