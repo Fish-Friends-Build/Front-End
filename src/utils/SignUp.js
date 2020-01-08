@@ -35,6 +35,7 @@ const SignUp = (props) => {
                     name="username"
                     value={user.username}
                     onChange={handleChanges}
+                    required
                 />
                 <input
                     placeholder="Password"
@@ -42,6 +43,7 @@ const SignUp = (props) => {
                     name="password"
                     value={user.password}
                     onChange={handleChanges}
+                    required
                 />
 
                 <button type="submit">Sign Up</button>
