@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 import JournalEntriesCard from './JournalEntriesCard';
 
 const JournalEntries = () => {
   const [Entries, setEntries] = useState([]);
-  const userID = sessionStorage.getItem("user-id");
+  const userID = sessionStorage.getItem('user-id');
 
   useEffect(() => {
     axiosWithAuth()
