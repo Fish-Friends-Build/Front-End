@@ -21,7 +21,7 @@ const SignUp = (props) => {
         console.log("handleSignUpSubmit user to post with axios", user);
         axios  
             .post("https://fish-friends-api.herokuapp.com/api/auth/register", user)
-            .then(localStorage.setItem('token', 'user'))
+            .then(sessionStorage.setItem('token', 'user'))
             .then(props.history.push('/'))
             .catch(err => console.log("Something went wrong when submitting the SignUp form", err))
     };

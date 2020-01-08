@@ -5,7 +5,7 @@ import JournalEntriesCard from './JournalEntriesCard';
 
 const JournalEntries = () => {
   const [Entries, setEntries] = useState([]);
-  const userID = localStorage.getItem("user-id");
+  const userID = sessionStorage.getItem("user-id");
 
   useEffect(() => {
     axiosWithAuth()
