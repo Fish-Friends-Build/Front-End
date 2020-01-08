@@ -22,6 +22,7 @@ const FishingSpotsCard = ({ name, county, bestFish, access, pdf }) => {
                 <p>Access Rights: {access}</p>
                 {moreInfo(pdf)}
                 <StarRating totalStars={5} />
+                <Link to={`/location-journals/${name}`}><button>View Journals</button></Link>
                 <Link to={`/journal-post/${name}`}><button>Create New Journal Post</button></Link>
             </div>
         </Col>
