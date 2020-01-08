@@ -5,13 +5,14 @@ import JournalEntriesCard from './JournalEntriesCard';
 
 const JournalEntries = () => {
   const [Entries, setEntries] = useState([]);
+  const userID = localStorage.getItem("user-id");
 
   useEffect(() => {
     axiosWithAuth()
-      .get('/journals/user/:id')
+      .get(`journals/user/${userID}`)
       .then(res => setEntries(res.data))
       .catch(err => console.log(err));
-  });
+  }, []);
 
   return (
     <>
