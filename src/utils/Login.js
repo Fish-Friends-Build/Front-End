@@ -23,7 +23,7 @@ const Login = (props) => {
             .post("https://fish-friends-api.herokuapp.com/api/auth/login", credentials)
             .then(res => {
                 console.log("handleSubmitLogin post results: ", res);
-                //// STILL NEED TO ROUTE TO PRIVATE ROUTE ////
+                localStorage.setItem("user-id", res.data.id);
                 localStorage.setItem("token", res.data.token);
                 props.history.push("/fishing-spots");
 
