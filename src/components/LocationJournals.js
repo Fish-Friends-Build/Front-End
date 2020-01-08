@@ -29,6 +29,11 @@ const LocationJournals = props => {
                     }
                 }
                 // console.log(journalGet);
+                // const sortedJournals = journalGet.slice().sort((a, b) => a.date - b.date);
+                journalGet.sort(function(a,b){
+                    return new Date(b.date) - new Date(a.date)
+                  })
+                console.log(journalGet);
                 setJournals(journalGet);
 
             })

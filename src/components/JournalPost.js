@@ -17,7 +17,7 @@ const JournalPost = props => {
       .post('/journals', { ...JournalPostData, location: props.match.params.name })
       .then(res => {
         console.log(res);
-        props.history.push(`/journal-post/${props.match.params.name}`);
+        props.history.push(`/location-journals/${props.match.params.name}`);
       })
       .catch(err => {
         console.log('unable to post', err);
