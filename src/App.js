@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute';
 import FishingSpotsAPI from './components/FishingSpotsAPI';
 import JournalEntries from './components/JournalEntries';
 import JournalPost from './components/JournalPost';
+import LocationJournals from './components/LocationJournals';
 
 function App() {
   const [FishingSpotsData, setFishingSpotsData] = useState([]);
@@ -34,11 +35,10 @@ function App() {
           <Navigation />
 
           <Switch>
-            <PrivateRoute
-              exact
-              path="/fishing-spots"
-              component={FishingSpotsAPI}
-            />
+
+            <PrivateRoute exact path="/fishing-spots" component={FishingSpotsAPI} />
+            <PrivateRoute exact path="/location-journals/:name" component={LocationJournals} />
+    
             <PrivateRoute
               exact
               path="/journal-entries"
