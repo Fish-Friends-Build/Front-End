@@ -16,28 +16,39 @@ import Login from './utils/Login';
 import SignUp from './utils/SignUp';
 import PrivateRoute from './components/PrivateRoute';
 import FishingSpotsAPI from './components/FishingSpotsAPI';
-import UserJournalEntries from './components/UserJournalEntries';
+import JournalEntries from './components/JournalEntries';
 import JournalPost from './components/JournalPost';
 
 function App() {
   const [FishingSpotsData, setFishingSpotsData] = useState([]);
   const [JournalPostData, setJournalPostData] = useState([]);
 
-
   return (
-    <FishingSpotsContext.Provider value={{ FishingSpotsData, setFishingSpotsData }}>
-      <JournalPostContext.Provider value={{ JournalPostData, setJournalPostData }}>
+    <FishingSpotsContext.Provider
+      value={{ FishingSpotsData, setFishingSpotsData }}
+    >
+      <JournalPostContext.Provider
+        value={{ JournalPostData, setJournalPostData }}
+      >
         <div className="App">
           <Navigation />
 
           <Switch>
-            <PrivateRoute exact path="/fishing-spots" component={FishingSpotsAPI} />
+            <PrivateRoute
+              exact
+              path="/fishing-spots"
+              component={FishingSpotsAPI}
+            />
             <PrivateRoute
               exact
               path="/journal-entries"
-              component={UserJournalEntries}
+              component={JournalEntries}
             />
-            <PrivateRoute exact path="/journal-post/:name" component={JournalPost} />
+            <PrivateRoute
+              exact
+              path="/journal-post/:name"
+              component={JournalPost}
+            />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route component={Login} />
