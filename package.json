@@ -15,6 +15,8 @@
     "react-scripts": "3.3.0",
     "react-strap": "^0.0.1",
     "reactstrap": "^8.2.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2",
     "styled-components": "^4.4.1"
   },
   "scripts": {
