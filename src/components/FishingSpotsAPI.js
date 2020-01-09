@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import FishingSpotsCard from './FishingSpotsCard';
-import { Container, Row } from 'reactstrap'
 import LocationSearchForm from './LocationSearchForm';
 import { FishingSpotsContext } from '../contexts/FishingSpotsContext';
 import style from 'styled-components';
@@ -57,11 +56,22 @@ const FishingSpotsAPI = () => {
 
     // console.log(FishingSpotsData);
 
-
-
-    return (
-        <section>
-            <div>
+    if (searchResults.length === 0) {
+        return (
+            <section>
+                <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+                <BorderDiv>
+                    <ResultsContainer>
+                        {FishingSpotsData.map(data => (
+                            <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+                        ))}
+                    </ResultsContainer>
+                </BorderDiv>
+            </section>
+        )
+    } else {
+        return (
+            <section>
                 <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
                 <BorderDiv>
                     <ResultsContainer>
@@ -70,16 +80,34 @@ const FishingSpotsAPI = () => {
                         ))}
                     </ResultsContainer>
                 </BorderDiv>
-            </div>
+            </section>
+        )
+    }
 
-            <div>
-                <ResultsContainer>
-                    {FishingSpotsData.map(data => (
-                        <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-                    ))}
-                </ResultsContainer>
-            </div>
-        </section>
-    );
+
+    // return (
+    //     <section>
+    //         <div>
+    //             <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+    //             <BorderDiv>
+    //                 <ResultsContainer>
+    //                     {searchResults.map(data => (
+    //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+    //                     ))}
+    //                 </ResultsContainer>
+    //             </BorderDiv>
+    //         </div>
+
+    //         <div>
+    //             <BorderDiv>
+    //                 <ResultsContainer>
+    //                     {FishingSpotsData.map(data => (
+    //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+    //                     ))}
+    //                 </ResultsContainer>
+    //             </BorderDiv>
+    //         </div>
+    //     </section>
+    // );
 }
 export default FishingSpotsAPI;
