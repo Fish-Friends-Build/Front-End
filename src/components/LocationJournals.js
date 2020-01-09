@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
+import LocationJournalCard from './LocationJournalCard';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const LocationJournals = props => {
@@ -28,9 +29,9 @@ const LocationJournals = props => {
                         journalGet.push(res.data[i]);
                     }
                 }
-                journalGet.sort(function(a,b){
+                journalGet.sort(function (a, b) {
                     return new Date(b.date) - new Date(a.date)
-                  })
+                })
                 console.log(journalGet);
                 setJournals(journalGet);
 
@@ -40,25 +41,35 @@ const LocationJournals = props => {
 
     console.log(journals);
 
-    return (
-        <>
-            {journals.map(entry => (
-                <div className="global-journal-cards">
-                    <h4>Location Name: {entry.location}</h4>
-                    <p>Date: {entry.date}</p>
-                    <p>Time of Day: {entry.timeOfDay}</p>
-                    <p>Number of Fish Caught: {entry.numFishCaught}</p>
-                    <p>Fish Type: {entry.fishType}</p>
-                    <p>Bait Type: {entry.bait}</p>
-                    <p>Bank or Boat: {entry.bankOrBoat}</p>
-                    <p>Fresh Water or Salt Water: {entry.waterType}</p>
-                    <p>NOTES: {entry.notes}</p>
-                    <p>posted by: {entry.username}</p>
-                </div>
 
-            ))}
-        </>
-    )
+    if (journals.length === 0) {
+        return (
+            <>
+                <p>There are no entries for this location yet</p>
+                <Link to={`/journal-post/${props.match.params.name}`}><button>Create New Journal Post</button></Link>
+            </>
+        )
+    } else {
+
+        return (
+            <div style={{ display: "flex", flexWrap: "wrap", alignContent: "stretch", justifyContent: "space-evenly" }}>
+                {journals.map(entry => (
+                    <LocationJournalCard
+                        numFishCaught={entry.numFishCaught}
+                        date={entry.date}
+                        timeOfDay={entry.timeOfDay}
+                        location={entry.location}
+                        fishType={entry.fishType}
+                        bait={entry.bait}
+                        bankOrBoat={entry.bankOrBoat}
+                        waterType={entry.waterType}
+                        notes={entry.notes}
+                        username={entry.username}
+                    />
+                ))}
+            </div>
+        );
+    }
 }
 
 export default LocationJournals;
