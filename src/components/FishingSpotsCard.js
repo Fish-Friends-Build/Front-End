@@ -1,6 +1,6 @@
 import React from 'react';
 import StarRating from './StarRating';
-import { Col } from 'reactstrap'
+// import { Col } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import style from 'styled-components';
 
@@ -10,14 +10,17 @@ const StyleDiv = style.div`
     border-top-right-radius: 5%;
     border-top-left-radius: 5%;
     width: 275px;
-    margin-right: 40px;
-    margin-top: 40px;
+    margin: 1% auto;
     align-items: center;
     text-align: center
     font-family: 'Abel', sans-serif;
     color: #eeeeee
     font-size: 20px;
     background: rgba(0,0,0,0.7);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     `
 const Button = style.button`
 display: block;
@@ -32,10 +35,9 @@ color: #eee;
 transition: all 0.15s ease-in-out;
 &:hover {
     background: rgba(255, 255, 255, 0.2);
-    
 }
 `
-const accent ={
+const accent = {
     border: 'thin solid #f11212'
 }
 
@@ -50,18 +52,24 @@ const FishingSpotsCard = ({ name, county, bestFish, access, pdf }) => {
     }
 
     return (
-        <Col lg='3' md='4' sm='2'>
-                <StyleDiv>
+        // <Col lg='auto' md='auto' sm='auto'>
+        <StyleDiv>
+            <div className="card-top">
                 <h1>Location: {name}</h1>
                 <h2>County: {county}</h2>
+            </div>
+            <div className="card-middle">
                 <p>Catches Available: {bestFish}</p>
                 <p>Access Rights: {access}</p>
                 {moreInfo(pdf)}
-                <StarRating totalStars={5}  />
+            </div>
+            <div className="card-bottom">
+                <StarRating totalStars={5} />
                 <Link to={`/location-journals/${name}`}><Button>View Journals</Button></Link>
                 <Link to={`/journal-post/${name}`}><Button>Create New Journal Post</Button></Link>
-                </StyleDiv>   
-        </Col>
+            </div>
+        </StyleDiv>
+        // </Col>
     );
 }
 
