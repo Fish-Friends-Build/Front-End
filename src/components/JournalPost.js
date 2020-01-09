@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+// import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormField, Label, Input } from 'semantic-ui-react';
 
 import { JournalPostContext } from '../contexts/JournalPostContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-
-
-const JournalPost  = props => {
+const JournalPost = props => {
   const { JournalPostData, setJournalPostData } = useContext(JournalPostContext);
 
   const handleChanges = e => {
@@ -16,7 +15,10 @@ const JournalPost  = props => {
   const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post('/journals', { ...JournalPostData, location: props.match.params.name })
+      .post('/journals', {
+        ...JournalPostData,
+        location: props.match.params.name
+      })
       .then(res => {
         console.log(res);
         props.history.push(`/location-journals/${props.match.params.name}`);
@@ -30,6 +32,7 @@ const JournalPost  = props => {
     <>
       <h3>{props.match.params.name}</h3>
       <Form onChange={handleChanges} onSubmit={handleSubmit}>
+    
         <FormGroup >
           <Label>Number Of Fish Caught</Label>
           <Input  required type="number" name="numFishCaught" id="numFishCaught" />
@@ -45,7 +48,7 @@ const JournalPost  = props => {
           <Input required type="text" name="timeOfDay" id="timeOfDay" />
         </FormGroup>
 
-        <FormGroup>
+        <FormField>
           <Label>Type Of Fish</Label>
           <Input
             type="text"
@@ -53,9 +56,9 @@ const JournalPost  = props => {
             id="fishType"
             placeholder="What Fish Did You Catch?"
           />
-        </FormGroup>
+        </FormField>
 
-        <FormGroup>
+        <FormField>
           <Label>Type Of Bait</Label>
           <Input
             type="text"
@@ -63,7 +66,8 @@ const JournalPost  = props => {
             id="bait"
             placeholder="What's The Secret There Partner?"
           />
-        </FormGroup>
+        </FormField>
+
 
         <FormGroup tag="fieldset">
           <FormGroup   check>
@@ -72,8 +76,8 @@ const JournalPost  = props => {
             <br/>Or <br/>
             <Input type="radio" name="bankOrBoat" value="Boat" />Boat
             </Label>
-          </FormGroup>
-        </FormGroup>
+          </FormField>
+        </Form>
 
         <FormGroup  check>
           <Label check>
@@ -82,9 +86,8 @@ const JournalPost  = props => {
             <Input type="radio" name="waterType" value="SaltWater" />Salt Water
           </Label>
         </FormGroup>
-          
 
-        <FormGroup>
+        <FormField>
           <Label>Remember To...</Label>
           <Input
             required 
@@ -93,7 +96,7 @@ const JournalPost  = props => {
             id="notes"
             placeholder="Bring the chair, Take bug spray, feed the dog etc..."
           />
-        </FormGroup>
+        </FormField>
 
         <Button>Submit</Button>
       </Form>
