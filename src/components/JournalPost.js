@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Button, Form, FormField, Label, Input } from 'semantic-ui-react';
+import { Button, FormGroup, Form, FormField, Label, Input } from 'semantic-ui-react';
 
 import { JournalPostContext } from '../contexts/JournalPostContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
@@ -76,8 +76,8 @@ const JournalPost = props => {
             <br/>Or <br/>
             <Input type="radio" name="bankOrBoat" value="Boat" />Boat
             </Label>
-          </FormField>
-        </Form>
+          </FormGroup>
+        </FormGroup>
 
         <FormGroup  check>
           <Label check>
@@ -88,13 +88,13 @@ const JournalPost = props => {
         </FormGroup>
 
         <FormField>
-          <Label>Remember To...</Label>
+          <Label>Session Notes...</Label>
           <Input
             required 
             type="textarea"
             name="notes"
             id="notes"
-            placeholder="Bring the chair, Take bug spray, feed the dog etc..."
+            placeholder="Remember to bring the chair, Take bug spray, feed the dog etc..."
           />
         </FormField>
 
