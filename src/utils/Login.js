@@ -1,8 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
-
 import SignUp from './SignUp';
+import style from 'styled-components';
+
+const StyleForm = style.form`
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    width: 25%;
+    margin: 0 auto;
+    border: thin solid #8dba20;
+    border-radius: 1px;
+    background: rgba(255, 255, 255, .1);
+    font-family: 'Abel', sans-serif;
+    color: #eeeeee
+    background: rgba(0,0,0,0.7);
+  `;
+  
+      const StyleInput = style.input`
+      border: 1px solid #a9a9a9;
+      border-radius: 3px;
+      padding: 10px;
+      margin: 5px;
+      width: 150px;
+      box-sizing: border-box;
+      margin-top: 10px;
+    `;
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({
@@ -31,12 +55,12 @@ const Login = (props) => {
             .catch(err => console.log("handleSubmitLogin Error", err));
     }
 
-
+    
 
     return (
         <div>
-            <form onSubmit={handleSubmitLogin}>
-                <input
+            <StyleForm onSubmit={handleSubmitLogin}>
+                <StyleInput
                     placeholder="Username"
                     type="text"
                     name="username"
@@ -44,7 +68,7 @@ const Login = (props) => {
                     onChange={handleChanges}
                     required
                 />
-                <input
+                <StyleInput
                     placeholder="Password"
                     type="text"
                     name="password"
@@ -54,12 +78,13 @@ const Login = (props) => {
                 />
 
                 <button type="submit">Log In</button>
-            </form>
+            
             <div>
                 <p>Don't have an account?</p>
                 <Link to="/signup">Sign Up</Link>
                 <Route exact path="/signup" component={SignUp}/>
             </div>
+            </StyleForm>
         </div>
     )
 };

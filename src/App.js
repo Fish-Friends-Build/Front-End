@@ -21,6 +21,16 @@ import JournalEntries from './components/JournalEntries';
 import JournalPost from './components/JournalPost';
 import LocationJournals from './components/LocationJournals';
 import EditEntryForm from './components/EditEntryForm';
+import style from 'styled-components';
+
+const VidDiv = style.div`   
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+overflow: hidden;
+z-index: -100;`
 
 function App() {
   const [FishingSpotsData, setFishingSpotsData] = useState([]);
@@ -28,6 +38,13 @@ function App() {
   const [JournalEntriesData, setJournalEntriesData] = useState([]);
 
   return (
+    <>
+    <VidDiv>
+            <video autoplay muted loop>
+            <source src="https://novus.one/vid/bg-vid.mp4" type="video/mp4"/>
+            Your browser does not support HTML5 video.
+        </video>
+    </VidDiv>
     <FishingSpotsContext.Provider
       value={{ FishingSpotsData, setFishingSpotsData }}
     >
@@ -75,6 +92,7 @@ function App() {
         </JournalEntriesContext.Provider>
       </JournalPostContext.Provider>
     </FishingSpotsContext.Provider>
+    </>
   );
 }
 
