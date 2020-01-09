@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Button, FormGroup, Form, FormField, Label, Input } from 'semantic-ui-react';
+import { Button, FormGroup, FormField, Label, Input } from 'semantic-ui-react';
 
 import { JournalPostContext } from '../contexts/JournalPostContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
@@ -31,53 +31,59 @@ const JournalPost = props => {
   return (
     <>
       <h3>{props.match.params.name}</h3>
-      <Form onChange={handleChanges} onSubmit={handleSubmit}>
+      <FormField onChange={handleChanges} onSubmit={handleSubmit}>
     
-        <FormGroup >
-          <Label>Number Of Fish Caught</Label>
+        <FormGroup > 
+          <Label>Number Of Fish Caught
           <Input  required type="number" name="numFishCaught" id="numFishCaught" />
+          </Label>
         </FormGroup>
 
         <FormGroup >
-          <Label>Date</Label>
+          <Label>Date
           <Input required type="date" name="date" id="date" />
+          </Label>
         </FormGroup>
 
         <FormGroup >
-          <Label>Time of Day</Label>
+          <Label>Time of Day
           <Input required type="text" name="timeOfDay" id="timeOfDay" />
+          </Label>
         </FormGroup>
 
-        <FormField>
-          <Label>Type Of Fish</Label>
+        <FormGroup>
+          <Label>Type Of Fish
           <Input
             type="text"
             name="fishType"
             id="fishType"
             placeholder="What Fish Did You Catch?"
           />
-        </FormField>
+          </Label>
+        </FormGroup>
 
-        <FormField>
-          <Label>Type Of Bait</Label>
+        <FormGroup>
+          <Label>Type Of Bait
           <Input
             type="text"
             name="bait"
             id="bait"
             placeholder="What's The Secret There Partner?"
           />
-        </FormField>
+          </Label>
+        </FormGroup>
 
 
-        <FormGroup tag="fieldset">
-          <FormGroup   check>
+        <FormField tag="fieldset">
+
+          <FormGroup   check> 
             <Label  check> 
             <Input required type="radio" name="bankOrBoat" value="Bank" /> Bank 
             <br/>Or <br/>
             <Input type="radio" name="bankOrBoat" value="Boat" />Boat
             </Label>
-          </FormGroup>
-        </FormGroup>
+         </FormGroup>
+          
 
         <FormGroup  check>
           <Label check>
@@ -86,20 +92,22 @@ const JournalPost = props => {
             <Input type="radio" name="waterType" value="SaltWater" />Salt Water
           </Label>
         </FormGroup>
+        
+        </FormField>
 
-        <FormField>
-          <Label>Session Notes...</Label>
+        <FormGroup>
+          <Label>Session Notes...
           <Input
             required 
             type="textarea"
             name="notes"
             id="notes"
             placeholder="Remember to bring the chair, Take bug spray, feed the dog etc..."
-          />
-        </FormField>
+          /></Label>
+        </FormGroup>
 
         <Button>Submit</Button>
-      </Form>
+      </FormField>
     </>
   );
 };
