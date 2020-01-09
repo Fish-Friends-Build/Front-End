@@ -23,20 +23,24 @@ const JournalEntries = () => {
   return (
     <>
       {JournalEntriesData.map(entry => (
-        <JournalEntriesCard
-          id={entry.id}
-          numFishCaught={entry.numFishCaught}
-          date={entry.date}
-          timeOfDay={entry.timeOfDay}
-          location={entry.location}
-          fishType={entry.fishType}
-          bait={entry.bait}
-          bankOrBoat={entry.bankOrBoat}
-          waterType={entry.waterType}
-          notes={entry.notes}
-        />
-      ))}
-    </>
+        <div style={{ display: "flex", flexWrap: "wrap", alignContent: "stretch", justifyContent: "space-evenly" }}>
+          {Entries.map(entry => (
+            <JournalEntriesCard
+              id={entry.id}
+              numFishCaught={entry.numFishCaught}
+              date={entry.date}
+              timeOfDay={entry.timeOfDay}
+              location={entry.location}
+              fishType={entry.fishType}
+              bait={entry.bait}
+              bankOrBoat={entry.bankOrBoat}
+              waterType={entry.waterType}
+              notes={entry.notes}
+            />
+          )
+        )
+     }
+    </div>
   );
 };
 

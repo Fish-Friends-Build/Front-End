@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 // import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Button, Form, FormField, Label, Input } from 'semantic-ui-react';
+import { Button, FormGroup, FormField, Label, Input } from 'semantic-ui-react';
 
 import { JournalPostContext } from '../contexts/JournalPostContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const JournalPost = props => {
-  const { JournalPostData, setJournalPostData } = useContext(
-    JournalPostContext
-  );
+  const { JournalPostData, setJournalPostData } = useContext(JournalPostContext);
 
   const handleChanges = e => {
     setJournalPostData({ ...JournalPostData, [e.target.name]: e.target.value });
@@ -23,81 +21,95 @@ const JournalPost = props => {
       })
       .then(res => {
         console.log(res);
-        props.history.push(`/journal-post/${props.match.params.name}`);
+        props.history.push(`/location-journals/${props.match.params.name}`);
       })
       .catch(err => {
         console.log('unable to post', err);
       });
   };
-
+  
   return (
     <>
       <h3>{props.match.params.name}</h3>
-      <Form onChange={handleChanges} onSubmit={handleSubmit}>
-        <FormField>
-          <Label>Number Of Fish Caught</Label>
-          <Input type="number" name="numFishCaught" id="numFishCaught" />
-        </FormField>
+      <form onChange={handleChanges} onSubmit={handleSubmit}>
+      <FormField>
+    
+        <FormGroup > 
+          <Label>Number Of Fish Caught
+          <Input  required type="number" name="numFishCaught" id="numFishCaught" />
+          </Label>
+        </FormGroup>
 
-        <FormField>
-          <Label>Date</Label>
-          <Input type="date" name="date" id="date" />
-        </FormField>
+        <FormGroup >
+          <Label>Date
+          <Input required type="date" name="date" id="date" />
+          </Label>
+        </FormGroup>
 
-        <FormField>
-          <Label>Time of Day</Label>
-          <Input type="text" name="timeOfDay" id="timeOfDay" />
-        </FormField>
+        <FormGroup >
+          <Label>Time of Day
+          <Input required type="text" name="timeOfDay" id="timeOfDay" />
+          </Label>
+        </FormGroup>
 
-        <FormField>
-          <Label>Type Of Fish</Label>
+        <FormGroup>
+          <Label>Type Of Fish
           <Input
             type="text"
             name="fishType"
             id="fishType"
             placeholder="What Fish Did You Catch?"
           />
-        </FormField>
+          </Label>
+        </FormGroup>
 
-        <FormField>
-          <Label>Type Of Bait</Label>
+        <FormGroup>
+          <Label>Type Of Bait
           <Input
             type="text"
             name="bait"
             id="bait"
             placeholder="What's The Secret There Partner?"
           />
-        </FormField>
-
-        <Form tag="fieldset">
-          <FormField check>
-            <Label check>
-              <Input type="radio" name="bankOrBoat" value="Bank" /> Bank Or Boat
-              <Input type="radio" name="bankOrBoat" value="Boat" />
-            </Label>
-          </FormField>
-        </Form>
-
-        <FormField check>
-          <Label check>
-            <Input type="radio" name="waterType" value="FreshWater" /> Fresh
-            Water Or Salt Water
-            <Input type="radio" name="waterType" value="SaltWater" />
           </Label>
+        </FormGroup>
+
+
+        <FormField tag="fieldset">
+
+          <FormGroup   check> 
+            <Label  check> 
+            <Input required type="radio" name="bankOrBoat" value="Bank" /> Bank 
+            <br/>Or <br/>
+            <Input type="radio" name="bankOrBoat" value="Boat" />Boat
+            </Label>
+         </FormGroup>
+          
+
+        <FormGroup  check>
+          <Label check>
+            <Input required type="radio" name="waterType" value="FreshWater" /> Fresh Water 
+            <br/> Or <br/>
+            <Input type="radio" name="waterType" value="SaltWater" />Salt Water
+          </Label>
+        </FormGroup>
+        
         </FormField>
 
-        <FormField>
-          <Label>Remember To...</Label>
+        <FormGroup>
+          <Label>Session Notes...
           <Input
+            required 
             type="textarea"
             name="notes"
             id="notes"
-            placeholder="Bring the chair, Take bug spray, feed the dog etc..."
-          />
-        </FormField>
+            placeholder="Remember to bring the chair, Take bug spray, feed the dog etc..."
+          /></Label>
+        </FormGroup>
 
         <Button>Submit</Button>
-      </Form>
+      </FormField>
+      </form>
     </>
   );
 };

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
-import { useHistory } from 'react-router-dom';
 
-const JournalEntriesCard = ({
-  id,
+const LocationJournalCard = ({
   numFishCaught,
   date,
   timeOfDay,
@@ -12,15 +10,9 @@ const JournalEntriesCard = ({
   bait,
   bankOrBoat,
   waterType,
-  notes
-}) => {
-  const userID = sessionStorage.getItem('user-id');
-  let history = useHistory();
-
-  const handleClick = e => {
-    e.preventDefault();
-    history.push(`/edit-entry-form/${id}`);
-  };
+  notes,
+  username
+}) => { 
 
   return (
     <Card style={{margin:"0"}}>
@@ -40,8 +32,8 @@ const JournalEntriesCard = ({
           {numFishCaught} {fishType} Caught with {bait} at the {bankOrBoat} in {waterType}
         </p>
       </Card.Content>
-      <Button onClick={handleClick}>Edit</Button>
+      <Button onClick={(e)=>e.preventDefault()}>{username}</Button>
     </Card>
   );
 };
-export default JournalEntriesCard;
+export default LocationJournalCard;
