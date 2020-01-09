@@ -31,7 +31,8 @@ const JournalPost = props => {
   return (
     <>
       <h3>{props.match.params.name}</h3>
-      <FormField onChange={handleChanges} onSubmit={handleSubmit}>
+      <form onChange={handleChanges} onSubmit={handleSubmit}>
+      <FormField>
     
         <FormGroup > 
           <Label>Number Of Fish Caught
@@ -108,6 +109,7 @@ const JournalPost = props => {
 
         <Button>Submit</Button>
       </FormField>
+      </form>
     </>
   );
 };
