@@ -22,7 +22,7 @@ const JournalEntriesCard = ({
   };
 
   return (
-    <Card>
+    <Card style={{margin:"0"}}>
       {/* <Image src="/images/avatar/large/matthew.png" wrapped ui={false} /> */}
       <Card.Content>
         <Card.Header>{location}</Card.Header>
