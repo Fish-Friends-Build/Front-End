@@ -6,9 +6,7 @@ import { JournalPostContext } from '../contexts/JournalPostContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const JournalPost = props => {
-  const { JournalPostData, setJournalPostData } = useContext(
-    JournalPostContext
-  );
+  const { JournalPostData, setJournalPostData } = useContext(JournalPostContext);
 
   const handleChanges = e => {
     setJournalPostData({ ...JournalPostData, [e.target.name]: e.target.value });
@@ -29,25 +27,26 @@ const JournalPost = props => {
         console.log('unable to post', err);
       });
   };
-
+  
   return (
     <>
       <h3>{props.match.params.name}</h3>
       <Form onChange={handleChanges} onSubmit={handleSubmit}>
-        <FormField>
+    
+        <FormGroup >
           <Label>Number Of Fish Caught</Label>
-          <Input type="number" name="numFishCaught" id="numFishCaught" />
-        </FormField>
+          <Input  required type="number" name="numFishCaught" id="numFishCaught" />
+        </FormGroup>
 
-        <FormField>
+        <FormGroup >
           <Label>Date</Label>
-          <Input type="date" name="date" id="date" />
-        </FormField>
+          <Input required type="date" name="date" id="date" />
+        </FormGroup>
 
-        <FormField>
+        <FormGroup >
           <Label>Time of Day</Label>
-          <Input type="text" name="timeOfDay" id="timeOfDay" />
-        </FormField>
+          <Input required type="text" name="timeOfDay" id="timeOfDay" />
+        </FormGroup>
 
         <FormField>
           <Label>Type Of Fish</Label>
@@ -69,26 +68,29 @@ const JournalPost = props => {
           />
         </FormField>
 
-        <Form tag="fieldset">
-          <FormField check>
-            <Label check>
-              <Input type="radio" name="bankOrBoat" value="Bank" /> Bank Or Boat
-              <Input type="radio" name="bankOrBoat" value="Boat" />
+
+        <FormGroup tag="fieldset">
+          <FormGroup   check>
+            <Label  check> 
+            <Input required type="radio" name="bankOrBoat" value="Bank" /> Bank 
+            <br/>Or <br/>
+            <Input type="radio" name="bankOrBoat" value="Boat" />Boat
             </Label>
           </FormField>
         </Form>
 
-        <FormField check>
+        <FormGroup  check>
           <Label check>
-            <Input type="radio" name="waterType" value="FreshWater" /> Fresh
-            Water Or Salt Water
-            <Input type="radio" name="waterType" value="SaltWater" />
+            <Input required type="radio" name="waterType" value="FreshWater" /> Fresh Water 
+            <br/> Or <br/>
+            <Input type="radio" name="waterType" value="SaltWater" />Salt Water
           </Label>
-        </FormField>
+        </FormGroup>
 
         <FormField>
           <Label>Remember To...</Label>
           <Input
+            required 
             type="textarea"
             name="notes"
             id="notes"

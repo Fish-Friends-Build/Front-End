@@ -42,6 +42,7 @@ const Login = (props) => {
                     name="username"
                     value={credentials.username}
                     onChange={handleChanges}
+                    required
                 />
                 <input
                     placeholder="Password"
@@ -49,6 +50,7 @@ const Login = (props) => {
                     name="password"
                     value={credentials.password}
                     onChange={handleChanges}
+                    required
                 />
 
                 <button type="submit">Log In</button>
@@ -63,3 +65,4 @@ const Login = (props) => {
 };
 
 export default Login;
+
