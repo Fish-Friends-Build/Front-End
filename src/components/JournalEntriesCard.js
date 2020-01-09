@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 
 const JournalEntriesCard = ({
+  id,
   numFishCaught,
   date,
   timeOfDay,
@@ -18,7 +19,7 @@ const JournalEntriesCard = ({
 
   const handleClick = e => {
     e.preventDefault();
-    history.push(`/edit-entry-form/${userID}`);
+    history.push(`/edit-entry-form/${id}`);
   };
 
   return (
