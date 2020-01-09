@@ -1,12 +1,7 @@
 import React from "react";
 import style from 'styled-components';
-const handleSubmit = (e) => {
-  e.preventDefault();
-}
 
-
-const LocationSearchForm = ({ searchTerm, handleChange }) =>{
-  const StyleForm = style.form`
+ const StyleForm = style.form`
   display: flex;
   align-items: center;
   flex-flow: column;
@@ -29,6 +24,14 @@ const LocationSearchForm = ({ searchTerm, handleChange }) =>{
     box-sizing: border-box;
     margin-top: 1%;
   `;
+  
+const handleSubmit = (e) => {
+  e.preventDefault();
+}
+
+
+const LocationSearchForm = ({ searchTerm, handleChange }) =>{
+ 
     return (
     <section>
         <StyleForm onSubmit={handleSubmit} className="location-search-form">

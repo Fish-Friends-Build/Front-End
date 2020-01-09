@@ -2,30 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 import Login from './Login';
-import style from 'styled-components'
-
-const SignUp = (props) => {
-    const [user, setUser] = useState({
-        username: "",
-        password: ""
-    });
-
-    const handleChanges = e => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSignUpSubmit = e => {
-        e.preventDefault();
-        console.log("handleSignUpSubmit user to post with axios", user);
-        axios  
-            .post("https://fish-friends-api.herokuapp.com/api/auth/register", user)
-            .then(sessionStorage.setItem('token', 'user'))
-            .then(props.history.push('/'))
-            .catch(err => console.log("Something went wrong when submitting the SignUp form", err))
-    };
+import style from 'styled-components';
 
 const StyleForm = style.form`
   display: flex;
@@ -50,6 +27,30 @@ const StyleForm = style.form`
     box-sizing: border-box;
     margin-top: 10px;
   `;
+const SignUp = (props) => {
+    const [user, setUser] = useState({
+        username: "",
+        password: ""
+    });
+
+    const handleChanges = e => {
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSignUpSubmit = e => {
+        e.preventDefault();
+        console.log("handleSignUpSubmit user to post with axios", user);
+        axios  
+            .post("https://fish-friends-api.herokuapp.com/api/auth/register", user)
+            .then(sessionStorage.setItem('token', 'user'))
+            .then(props.history.push('/'))
+            .catch(err => console.log("Something went wrong when submitting the SignUp form", err))
+    };
+
+
             
         
     

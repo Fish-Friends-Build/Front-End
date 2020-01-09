@@ -6,6 +6,12 @@ import LocationSearchForm from './LocationSearchForm';
 import { FishingSpotsContext } from '../contexts/FishingSpotsContext';
 import style from 'styled-components';
 
+const BorderDiv = style.div`
+border: groove 10px #f11212;
+width: 75%;
+background: rgba(255,255,255,0.7);
+margin: 1% auto;
+`
 
 const FishingSpotsAPI = () => {
     const {FishingSpotsData, setFishingSpotsData} = useContext(FishingSpotsContext);
@@ -42,13 +48,8 @@ const FishingSpotsAPI = () => {
 
     // console.log(FishingSpotsData);
 
-const BorderDiv = style.div`
-border: groove 10px #f11212;
-width: 75%;
-background: rgba(255,255,255,0.7);
-margin: 1% auto;
 
-`
+
     return (
         <section>
             <div>
