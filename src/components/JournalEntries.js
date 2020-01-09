@@ -1,23 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+
+import { JournalEntriesContext } from '../contexts/JournalEntriesContext';
 
 import JournalEntriesCard from './JournalEntriesCard';
 
 const JournalEntries = () => {
-  const [Entries, setEntries] = useState([]);
+  const { JournalEntriesData, setJournalEntriesData } = useContext(
+    JournalEntriesContext
+  );
   const userID = sessionStorage.getItem('user-id');
 
   useEffect(() => {
     axiosWithAuth()
       .get(`journals/user/${userID}`)
-      .then(res => setEntries(res.data))
+      .then(res => setJournalEntriesData(res.data))
       .catch(err => console.log(err));
   }, []);
 
+  console.log(JournalEntriesData);
+
   return (
     <>
-      {Entries.map(entry => (
+      {JournalEntriesData.map(entry => (
         <JournalEntriesCard
+          id={entry.id}
           numFishCaught={entry.numFishCaught}
           date={entry.date}
           timeOfDay={entry.timeOfDay}
