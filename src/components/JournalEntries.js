@@ -15,7 +15,7 @@ const JournalEntries = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ display: "flex", flexWrap: "wrap", alignContent: "stretch", justifyContent: "space-evenly" }}>
       {Entries.map(entry => (
         <JournalEntriesCard
           numFishCaught={entry.numFishCaught}
@@ -29,7 +29,7 @@ const JournalEntries = () => {
           notes={entry.notes}
         />
       ))}
-    </>
+    </div>
   );
 };
 

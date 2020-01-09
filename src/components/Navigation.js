@@ -7,7 +7,7 @@ import Logout from '../utils/Logout';
 const Navigation = (props) => {
     return (
         <div className="navbar">
-            <Link to='/'><button>Fish Friends Home</button></Link>
+            <button><a style={{textDecoration:"none", color:"black"}} href="https://fishfriendsapp.netlify.com/">Fish Friends Home</a></button>
             <Link to='/fishing-spots'><button>Fishing Spots</button></Link>
             <Link to='/journal-entries'><button>Journal Entries</button></Link>
             <Link to='/login'><button>Login/SignUp</button></Link>
