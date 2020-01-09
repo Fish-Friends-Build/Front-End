@@ -52,6 +52,7 @@ const LocationJournals = props => {
     } else {
 
         return (
+            <>
             <div style={{ display: "flex", flexWrap: "wrap", alignContent: "stretch", justifyContent: "space-evenly" }}>
                 {journals.map(entry => (
                     <LocationJournalCard
@@ -68,6 +69,8 @@ const LocationJournals = props => {
                     />
                 ))}
             </div>
+            <Link to={`/journal-post/${props.match.params.name}`}><button>Create New Journal Post</button></Link>
+            </>
         );
     }
 }
