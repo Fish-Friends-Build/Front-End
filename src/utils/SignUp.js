@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
 import Login from './Login';
+import style from 'styled-components'
 
 const SignUp = (props) => {
     const [user, setUser] = useState({
@@ -26,18 +27,44 @@ const SignUp = (props) => {
             .catch(err => console.log("Something went wrong when submitting the SignUp form", err))
     };
 
+const StyleForm = style.form`
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  width: 25%;
+  margin: 0 auto;
+  border: thin solid #8dba20;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, .1);
+  font-family: 'Abel', sans-serif;
+  color: #eeeeee
+  background: rgba(0,0,0,0.7);
+`;
+
+    const StyleInput = style.input`
+    border: 1px solid #a9a9a9;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 5px;
+    width: 150px;
+    box-sizing: border-box;
+    margin-top: 10px;
+  `;
+            
+        
+    
     return (
-        <div>
-            <form onSubmit={handleSignUpSubmit}>
-                <input
-                    placeholder="Username"
+    <div>
+            <StyleForm onSubmit={handleSignUpSubmit} >
+                <StyleInput
+                placeholder="Username"
                     type="text"
                     name="username"
                     value={user.username}
                     onChange={handleChanges}
                     required
                 />
-                <input
+                <StyleInput
                     placeholder="Password"
                     type="text"
                     name="password"
@@ -47,14 +74,14 @@ const SignUp = (props) => {
                 />
 
                 <button type="submit">Sign Up</button>
-            </form>
+            
             <div>
                 <p>Already have an account?</p>
                 <Link to="/login">Log In</Link>
                 <Route exact path="/login" component={Login} />
             </div>
-        </div>
-
+        </StyleForm>
+</div>
     )
 
 }

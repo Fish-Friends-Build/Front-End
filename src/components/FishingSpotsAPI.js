@@ -4,7 +4,7 @@ import FishingSpotsCard from './FishingSpotsCard';
 import { Container, Row } from 'reactstrap'
 import LocationSearchForm from './LocationSearchForm';
 import { FishingSpotsContext } from '../contexts/FishingSpotsContext';
-
+import style from 'styled-components';
 
 
 const FishingSpotsAPI = () => {
@@ -42,20 +42,29 @@ const FishingSpotsAPI = () => {
 
     // console.log(FishingSpotsData);
 
+const BorderDiv = style.div`
+border: groove 10px #f11212;
+width: 75%;
+background: rgba(255,255,255,0.7);
+margin: 1% auto;
 
+`
     return (
         <section>
             <div>
                 <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+                <BorderDiv>
                 <Container>
                     <Row>
+                        
                         {searchResults.map(data => (
                             <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
                         ))}
                     </Row>
                 </Container>
-
+                </BorderDiv>
             </div>
+
             <div>
                 <Container>
                     <Row>
