@@ -3,11 +3,13 @@ import { Button, Form } from 'semantic-ui-react';
 
 import { JournalEntriesContext } from '../contexts/JournalEntriesContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 const EditEntryForm = props => {
   const { JournalEntriesData, setJournalEntriesData } = useContext(
     JournalEntriesContext
   );
+  let history = useHistory();
 
   const [localEntry, setLocalEntry] = useState([]);
 
@@ -35,6 +37,7 @@ const EditEntryForm = props => {
       .catch(err => {
         console.log(err.message);
       });
+    history.push('/journal-entries');
   };
 
   const handleDelete = () => {
@@ -46,6 +49,7 @@ const EditEntryForm = props => {
       .catch(err => {
         console.log(err);
       });
+    history.push('/journal-entries');
   };
 
   return (
@@ -60,51 +64,63 @@ const EditEntryForm = props => {
           justifyContent: 'center'
         }}
       >
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input
             placeholder="Location"
             name="location"
             value={localEntry.location}
           />
         </Form.Field>
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input placeholder="Date" name="date" value={localEntry.date} />
         </Form.Field>
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input
             placeholder="Time Of Day"
             name="timeOfDay"
             value={localEntry.timeOfDay}
           />
         </Form.Field>
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input placeholder="Notes" name="notes" value={localEntry.notes} />
         </Form.Field>
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input
             placeholder="Number Of Fish Caught"
             name="numFishCaught"
             value={localEntry.numFishCaught}
           />
         </Form.Field>
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input
             placeholder="Fish Type"
             name="fishType"
             value={localEntry.fishType}
           />
         </Form.Field>
-        <Form.Field width={4}>
+        <Form.Field width={5}>
           <input placeholder="Bait" name="bait" value={localEntry.bait} />
 
-          <Button type="submit" type="submit">
+          <Button style={{ margin: '4%' }} type="submit">
             Update
           </Button>
         </Form.Field>
       </Form>
-      <Button onClick={handleDelete} type="delete">
-        Delete
-      </Button>
+      <Form
+        style={{
+          display: 'flex',
+          flexFlow: 'column wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '1%'
+        }}
+      >
+        <Form.Field>
+          <Button onClick={handleDelete} type="delete">
+            Delete
+          </Button>
+        </Form.Field>
+      </Form>
     </>
   );
 };
