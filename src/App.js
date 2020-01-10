@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import './App.css';
 
-// import { Store } from './components/Store';
 import { FishingSpotsContext } from './contexts/FishingSpotsContext';
 import { JournalPostContext } from './contexts/JournalPostContext';
 import { JournalEntriesContext } from './contexts/JournalEntriesContext';
@@ -40,7 +39,7 @@ function App() {
   return (
     <>
       <VidDiv>
-        <video autoPlay muted loop>
+        <video autoplay muted loop>
           <source src="https://novus.one/vid/bg-vid.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
