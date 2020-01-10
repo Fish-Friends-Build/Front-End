@@ -4,22 +4,23 @@ import FishingSpotsCard from './FishingSpotsCard';
 import LocationSearchForm from './LocationSearchForm';
 import { FishingSpotsContext } from '../contexts/FishingSpotsContext';
 import style from 'styled-components';
+import {  Container, Row } from 'reactstrap';
 
 const BorderDiv = style.div`
-border: groove 10px #f11212;
+border: groove thick #f11212;
 width: 75%;
 background: rgba(255,255,255,0.7);
 margin: 1% auto;
 `
 
-const ResultsContainer = style.div`
-    max-width: 99%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-evenly;
-    margin: 0 auto;
-`
+// const ResultsContainer = style.div`
+//     max-width: 99%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-items: stretch;
+//     justify-content: space-evenly;
+//     margin: 0 auto;
+// `
 
 const FishingSpotsAPI = () => {
     const { FishingSpotsData, setFishingSpotsData } = useContext(FishingSpotsContext);
@@ -58,29 +59,40 @@ const FishingSpotsAPI = () => {
 
     if (searchResults.length === 0) {
         return (
+            <>
             <section>
                 <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-                <BorderDiv>
-                    <ResultsContainer>
+            </section>
+            
+                <BorderDiv>   
+                    <Container className='results'>
+                        <Row>
                         {FishingSpotsData.map(data => (
                             <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
                         ))}
-                    </ResultsContainer>
+                        </Row>
+                    </Container>
                 </BorderDiv>
-            </section>
+            </>
         )
     } else {
         return (
+            <>
             <section>
                 <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+            </section>
+            
                 <BorderDiv>
-                    <ResultsContainer>
-                        {searchResults.map(data => (
+                    <Container className='results'>
+                        <Row>
+                        {FishingSpotsData.map(data => (
                             <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
                         ))}
-                    </ResultsContainer>
+                        </Row>
+                    </Container>
                 </BorderDiv>
-            </section>
+            
+            </>
         )
     }
 

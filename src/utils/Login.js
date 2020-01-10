@@ -5,28 +5,50 @@ import SignUp from './SignUp';
 import style from 'styled-components';
 
 const StyleForm = style.form`
-    display: flex;
-    align-items: center;
-    flex-flow: column;
-    width: 25%;
-    margin: 0 auto;
-    border: thin solid #8dba20;
-    border-radius: 1px;
-    background: rgba(255, 255, 255, .1);
-    font-family: 'Abel', sans-serif;
-    color: #eeeeee
-    background: rgba(0,0,0,0.7);
-  `;
-  
-      const StyleInput = style.input`
-      border: 1px solid #a9a9a9;
-      border-radius: 3px;
-      padding: 10px;
-      margin: 5px;
-      width: 150px;
-      box-sizing: border-box;
-      margin-top: 10px;
-    `;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  width: 25%;
+  margin: 0 auto;
+  border: thin solid #8dba20;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, .1);
+  font-family: 'Abel', sans-serif;
+  color: #eee
+  background: rgba(0,0,0,0.7);
+`;
+
+    const StyleInput = style.input`
+    border: 1px solid #a9a9a9;
+    border-radius: 4%;
+    padding: 1%;
+    margin: 2%;
+    width: 40%;
+    box-sizing: border-box;
+    margin-top: 1%;
+  `
+
+const Button = style.button`
+display: block;
+border: thin solid #12a0f1
+border-radius: 4%;
+background: #333333
+font-weight: 900;
+text-align: center;
+margin: 2% auto;
+color: #eee;
+transition: all 0.15s ease-in-out;
+&:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+`
+const color = {
+    border: 'thin solid #eee',
+}
+
+const size ={
+    fontSize: '20px'
+}
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({
@@ -77,11 +99,11 @@ const Login = (props) => {
                     required
                 />
 
-                <button type="submit">Log In</button>
+                <Button type="submit" style={size}>Log In</Button>
             
             <div>
-                <p>Don't have an account?</p>
-                <Link to="/signup">Sign Up</Link>
+                <h5>Don't have an account?</h5>
+                <Link to="/signup"><Button style={color}>Sign Up</Button></Link>
                 <Route exact path="/signup" component={SignUp}/>
             </div>
             </StyleForm>

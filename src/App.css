@@ -38,3 +38,12 @@
     transform: rotate(360deg);
   }
 } */
+
+.results {
+  max-width: 99%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
