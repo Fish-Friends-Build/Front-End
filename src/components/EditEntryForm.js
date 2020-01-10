@@ -6,9 +6,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 
 const EditEntryForm = props => {
-  const { JournalEntriesData, setJournalEntriesData } = useContext(
-    JournalEntriesContext
-  );
+  const { JournalEntriesData } = useContext(JournalEntriesContext);
   let history = useHistory();
 
   const [localEntry, setLocalEntry] = useState([]);
