@@ -4,23 +4,23 @@ import FishingSpotsCard from './FishingSpotsCard';
 import LocationSearchForm from './LocationSearchForm';
 import { FishingSpotsContext } from '../contexts/FishingSpotsContext';
 import style from 'styled-components';
-import {  Container, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 
 const BorderDiv = style.div`
 border: groove thick #f11212;
-width: 75%;
-background: rgba(255,255,255,0.7);
+width: 98%;
+background: rgba(255,255,255,0.5);
 margin: 1% auto;
 `
 
-// const ResultsContainer = style.div`
-//     max-width: 99%;
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-items: stretch;
-//     justify-content: space-evenly;
-//     margin: 0 auto;
-// `
+ const ResultsContainer = style.div`
+     max-width: 99%;
+     display: flex;
+     flex-wrap: wrap;
+     align-items: stretch;
+     justify-content: space-evenly;
+     margin: 0 auto;
+ `
 
 const FishingSpotsAPI = () => {
     const { FishingSpotsData, setFishingSpotsData } = useContext(FishingSpotsContext);
@@ -65,13 +65,13 @@ const FishingSpotsAPI = () => {
             </section>
             
                 <BorderDiv>   
-                    <Container className='results'>
+                    <ResultsContainer>
                         <Row>
                         {FishingSpotsData.map(data => (
                             <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
                         ))}
                         </Row>
-                    </Container>
+                    </ResultsContainer>
                 </BorderDiv>
             </>
         )
@@ -83,13 +83,13 @@ const FishingSpotsAPI = () => {
             </section>
             
                 <BorderDiv>
-                    <Container className='results'>
+                    <ResultsContainer className='results'>
                         <Row>
                         {FishingSpotsData.map(data => (
                             <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
                         ))}
                         </Row>
-                    </Container>
+                    </ResultsContainer>
                 </BorderDiv>
             
             </>
