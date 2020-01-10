@@ -2,6 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LocationJournalCard from './LocationJournalCard';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import style from 'styled-components';
+
+const Button = style.button`
+display: block;
+border: thin solid #12a0f1
+border-radius: 4%;
+background: #333333
+font-weight: 900;
+text-align: center;
+margin: 2% auto;
+color: #eee;
+transition: all 0.15s ease-in-out;
+&:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+`
 
 const LocationJournals = props => {
   const [journals, setJournals] = useState([
@@ -47,7 +63,7 @@ const LocationJournals = props => {
       <>
         <p>There are no entries for this location yet</p>
         <Link to={`/journal-post/${props.match.params.name}`}>
-          <button>Create New Journal Post</button>
+          <Button>Create New Journal Post</Button>
         </Link>
       </>
     );
@@ -78,7 +94,7 @@ const LocationJournals = props => {
           ))}
         </div>
         <Link to={`/journal-post/${props.match.params.name}`}>
-          <button>Create New Journal Post</button>
+          <Button>Create New Journal Post</Button>
         </Link>
       </>
     );

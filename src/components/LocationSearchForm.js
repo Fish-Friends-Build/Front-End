@@ -9,7 +9,6 @@ width: 25%;
 margin: 0 auto;
 border: thin solid #8dba20;
 border-radius: 1px;
-background: rgba(255, 255, 255, .1);
 font-family: 'Abel', sans-serif;
 color: #eee
 background: rgba(0,0,0,0.7);

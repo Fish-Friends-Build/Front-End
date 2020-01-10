@@ -17,7 +17,7 @@ const NavBarBackground = style.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     margin-bottom: 10%;
     background-color: rgba(255, 255, 255, 0.1);
 `;

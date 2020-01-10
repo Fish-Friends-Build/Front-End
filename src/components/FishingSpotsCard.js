@@ -9,7 +9,7 @@ const StyleDiv = style.div`
     padding: 2%;
     border-top-right-radius: 5%;
     border-top-left-radius: 5%;
-    width 100% 
+    width: 100%;
     margin: 1% auto;
     align-items: center;
     text-align: center
@@ -17,6 +17,7 @@ const StyleDiv = style.div`
     color: #eee
     font-size: 20px;
     background: rgba(0,0,0,0.7);
+    height: 100%;
 
     display: flex; 
     flex-direction: column; 
@@ -54,7 +55,7 @@ const FishingSpotsCard = ({ name, county, bestFish, access, pdf }) => {
     }
 
     return (
-        <Col sm='6' md='3' lg= '2'>
+        <Col sm='6' md='4' lg= '2'>
         <StyleDiv>
             <div className="card-top">
                 <h1>Location: {name}</h1>
