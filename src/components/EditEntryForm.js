@@ -22,7 +22,7 @@ const EditEntryForm = props => {
       }
     }
     setLocalEntry(singleEntry);
-  }, [JournalEntriesData]);
+  }, [JournalEntriesData, props.match.params.id]);
 
   console.log(localEntry);
 
