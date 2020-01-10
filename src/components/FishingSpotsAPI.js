@@ -96,30 +96,29 @@ const FishingSpotsAPI = () => {
         )
     }
 
+  // return (
+  //     <section>
+  //         <div>
+  //             <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+  //             <BorderDiv>
+  //                 <ResultsContainer>
+  //                     {searchResults.map(data => (
+  //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+  //                     ))}
+  //                 </ResultsContainer>
+  //             </BorderDiv>
+  //         </div>
 
-    // return (
-    //     <section>
-    //         <div>
-    //             <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-    //             <BorderDiv>
-    //                 <ResultsContainer>
-    //                     {searchResults.map(data => (
-    //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-    //                     ))}
-    //                 </ResultsContainer>
-    //             </BorderDiv>
-    //         </div>
-
-    //         <div>
-    //             <BorderDiv>
-    //                 <ResultsContainer>
-    //                     {FishingSpotsData.map(data => (
-    //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-    //                     ))}
-    //                 </ResultsContainer>
-    //             </BorderDiv>
-    //         </div>
-    //     </section>
-    // );
-}
+  //         <div>
+  //             <BorderDiv>
+  //                 <ResultsContainer>
+  //                     {FishingSpotsData.map(data => (
+  //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+  //                     ))}
+  //                 </ResultsContainer>
+  //             </BorderDiv>
+  //         </div>
+  //     </section>
+  // );
+};
 export default FishingSpotsAPI;

@@ -14,7 +14,6 @@ const JournalEntriesCard = ({
   waterType,
   notes
 }) => {
-  // const userID = sessionStorage.getItem('user-id');
   let history = useHistory();
 
   const handleClick = e => {
@@ -23,7 +22,14 @@ const JournalEntriesCard = ({
   };
 
   return (
-    <Card style={{ margin: '0' }}>
+    <Card
+      style={{
+        display: 'flex',
+        flexFlow: 'row wrap',
+        width: '20%',
+        margin: '1%'
+      }}
+    >
       {/* <Image src="/images/avatar/large/matthew.png" wrapped ui={false} /> */}
       <Card.Content>
         <Card.Header>{location}</Card.Header>
