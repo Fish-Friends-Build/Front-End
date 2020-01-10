@@ -25,12 +25,15 @@ const NavBarBackground = style.div`
 const Button = style.button`
     display: flex;
     height: 100%;
+    width: 88%;
     border: none;
+    border-radius: 5px;
     background-color: rgba(255,255,255, 0);
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
     padding: 5% 2.5%;
+    margin: 2% auto;
     color: #EEE;
     transition: all 0.15 ease-in-out;
     &:hover {

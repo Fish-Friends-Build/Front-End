@@ -22,12 +22,14 @@ const Button = style.button`
     height: 100%;
     width: 100%;
     border: none;
+    border-radius: 5px;
     background-color: rgba(255,255,255, 0);
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
     justify-content: center;
     padding: 5% 2.5%;
+    margin: 2% auto;
     color: #EEE;
     transition: all 0.15 ease-in-out;
     &:hover {
