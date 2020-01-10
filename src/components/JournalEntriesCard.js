@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Card, Icon, Button } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 
 const JournalEntriesCard = ({
@@ -14,7 +14,7 @@ const JournalEntriesCard = ({
   waterType,
   notes
 }) => {
-  const userID = sessionStorage.getItem('user-id');
+  // const userID = sessionStorage.getItem('user-id');
   let history = useHistory();
 
   const handleClick = e => {
@@ -23,7 +23,7 @@ const JournalEntriesCard = ({
   };
 
   return (
-    <Card style={{margin:"0"}}>
+    <Card style={{ margin: '0' }}>
       {/* <Image src="/images/avatar/large/matthew.png" wrapped ui={false} /> */}
       <Card.Content>
         <Card.Header>{location}</Card.Header>
@@ -37,7 +37,8 @@ const JournalEntriesCard = ({
       <Card.Content extra>
         <p>
           <Icon name="cuttlefish" />
-          {numFishCaught} {fishType} Caught with {bait} at the {bankOrBoat} in {waterType}
+          {numFishCaught} {fishType} Caught with {bait} at the {bankOrBoat} in{' '}
+          {waterType}
         </p>
       </Card.Content>
       <Button onClick={handleClick}>Edit</Button>

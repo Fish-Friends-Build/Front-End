@@ -29,7 +29,7 @@ right: 0;
 bottom: 0;
 left: 0;
 overflow: hidden;
-z-index: -100;`
+z-index: -100;`;
 
 function App() {
   const [FishingSpotsData, setFishingSpotsData] = useState([]);
@@ -44,7 +44,6 @@ function App() {
           Your browser does not support HTML5 video.
         </video>
       </VidDiv>
-
       <FishingSpotsContext.Provider
         value={{ FishingSpotsData, setFishingSpotsData }}
       >

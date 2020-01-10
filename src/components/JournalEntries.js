@@ -16,13 +16,20 @@ const JournalEntries = () => {
       .get(`journals/user/${userID}`)
       .then(res => setJournalEntriesData(res.data))
       .catch(err => console.log(err));
-  }, []);
+  }, [userID, setJournalEntriesData]);
 
   console.log(JournalEntriesData);
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap", alignContent: "stretch", justifyContent: "space-evenly" }}>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignContent: 'stretch',
+          justifyContent: 'space-evenly'
+        }}
+      >
         {JournalEntriesData.map(entry => (
           <JournalEntriesCard
             id={entry.id}
@@ -35,6 +42,7 @@ const JournalEntries = () => {
             bankOrBoat={entry.bankOrBoat}
             waterType={entry.waterType}
             notes={entry.notes}
+            key={entry}
           />
         ))}
       </div>
