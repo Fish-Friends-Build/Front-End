@@ -10,7 +10,9 @@ const Logout = (props) => {
     }
 
     return (
-        <button onClick={handleLogout}>Logout</button>
+        <div style={{ width: "145px", display:"flex", justifyContent:"flex-end" }}>
+            <button onClick={handleLogout} >Logout</button>
+        </div>
     )
 }
 

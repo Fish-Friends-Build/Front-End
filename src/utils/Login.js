@@ -17,8 +17,8 @@ const StyleForm = style.form`
     color: #eeeeee
     background: rgba(0,0,0,0.7);
   `;
-  
-      const StyleInput = style.input`
+
+const StyleInput = style.input`
       border: 1px solid #a9a9a9;
       border-radius: 3px;
       padding: 10px;
@@ -55,7 +55,7 @@ const Login = (props) => {
             .catch(err => console.log("handleSubmitLogin Error", err));
     }
 
-    
+
 
     return (
         <div>
@@ -78,12 +78,12 @@ const Login = (props) => {
                 />
 
                 <button type="submit">Log In</button>
-            
-            <div>
-                <p>Don't have an account?</p>
-                <Link to="/signup">Sign Up</Link>
-                <Route exact path="/signup" component={SignUp}/>
-            </div>
+
+                <div>
+                    <p>Don't have an account?</p>
+                    <Link to="/signup">Sign Up</Link>
+                    <Route exact path="/signup" component={SignUp} />
+                </div>
             </StyleForm>
         </div>
     )
