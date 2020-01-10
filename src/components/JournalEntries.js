@@ -18,8 +18,6 @@ const JournalEntries = () => {
       .catch(err => console.log(err));
   }, [userID, setJournalEntriesData]);
 
-  console.log(JournalEntriesData);
-
   return (
     <>
       <div
@@ -30,21 +28,25 @@ const JournalEntries = () => {
           justifyContent: 'space-evenly'
         }}
       >
-        {JournalEntriesData.map(entry => (
-          <JournalEntriesCard
-            id={entry.id}
-            numFishCaught={entry.numFishCaught}
-            date={entry.date}
-            timeOfDay={entry.timeOfDay}
-            location={entry.location}
-            fishType={entry.fishType}
-            bait={entry.bait}
-            bankOrBoat={entry.bankOrBoat}
-            waterType={entry.waterType}
-            notes={entry.notes}
-            key={entry}
-          />
-        ))}
+        {JournalEntriesData.length ? (
+          JournalEntriesData.map(entry => (
+            <JournalEntriesCard
+              id={entry.id}
+              numFishCaught={entry.numFishCaught}
+              date={entry.date}
+              timeOfDay={entry.timeOfDay}
+              location={entry.location}
+              fishType={entry.fishType}
+              bait={entry.bait}
+              bankOrBoat={entry.bankOrBoat}
+              waterType={entry.waterType}
+              notes={entry.notes}
+              key={entry}
+            />
+          ))
+        ) : (
+          <h1>No Entries Available</h1>
+        )}
       </div>
     </>
   );
