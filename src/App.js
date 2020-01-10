@@ -39,7 +39,7 @@ function App() {
   return (
     <>
       <VidDiv>
-        <video autoplay muted loop>
+        <video autoPlay muted loop>
           <source src="https://novus.one/vid/bg-vid.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
