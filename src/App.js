@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import './App.css';
 
-// import { Store } from './components/Store';
 import { FishingSpotsContext } from './contexts/FishingSpotsContext';
 import { JournalPostContext } from './contexts/JournalPostContext';
 import { JournalEntriesContext } from './contexts/JournalEntriesContext';
@@ -39,59 +38,60 @@ function App() {
 
   return (
     <>
-    <VidDiv>
-            <video autoplay muted loop>
-            <source src="https://novus.one/vid/bg-vid.mp4" type="video/mp4"/>
-            Your browser does not support HTML5 video.
+      <VidDiv>
+        <video autoplay muted loop>
+          <source src="https://novus.one/vid/bg-vid.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
         </video>
-    </VidDiv>
-    <FishingSpotsContext.Provider
-      value={{ FishingSpotsData, setFishingSpotsData }}
-    >
-      <JournalPostContext.Provider
-        value={{ JournalPostData, setJournalPostData }}
+      </VidDiv>
+
+      <FishingSpotsContext.Provider
+        value={{ FishingSpotsData, setFishingSpotsData }}
       >
-        <JournalEntriesContext.Provider
-          value={{ JournalEntriesData, setJournalEntriesData }}
+        <JournalPostContext.Provider
+          value={{ JournalPostData, setJournalPostData }}
         >
-          <div className="App">
-            <Navigation />
+          <JournalEntriesContext.Provider
+            value={{ JournalEntriesData, setJournalEntriesData }}
+          >
+            <div className="App">
+              <Navigation />
 
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/edit-entry-form/:id"
-                component={EditEntryForm}
-              />
-              <PrivateRoute
-                exact
-                path="/fishing-spots"
-                component={FishingSpotsAPI}
-              />
-              <PrivateRoute
-                exact
-                path="/location-journals/:name"
-                component={LocationJournals}
-              />
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-entry-form/:id"
+                  component={EditEntryForm}
+                />
+                <PrivateRoute
+                  exact
+                  path="/fishing-spots"
+                  component={FishingSpotsAPI}
+                />
+                <PrivateRoute
+                  exact
+                  path="/location-journals/:name"
+                  component={LocationJournals}
+                />
 
-              <PrivateRoute
-                exact
-                path="/journal-entries"
-                component={JournalEntries}
-              />
-              <PrivateRoute
-                exact
-                path="/journal-post/:name"
-                component={JournalPost}
-              />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={SignUp} />
-              <Route component={Login} />
-            </Switch>
-          </div>
-        </JournalEntriesContext.Provider>
-      </JournalPostContext.Provider>
-    </FishingSpotsContext.Provider>
+                <PrivateRoute
+                  exact
+                  path="/journal-entries"
+                  component={JournalEntries}
+                />
+                <PrivateRoute
+                  exact
+                  path="/journal-post/:name"
+                  component={JournalPost}
+                />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={SignUp} />
+                <Route component={Login} />
+              </Switch>
+            </div>
+          </JournalEntriesContext.Provider>
+        </JournalPostContext.Provider>
+      </FishingSpotsContext.Provider>
     </>
   );
 }

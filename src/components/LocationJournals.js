@@ -37,7 +37,7 @@ const LocationJournals = props => {
 
             })
             .catch(err => console.log("LocationJournals get error: ", err));
-    }, []);
+    }, [props.match.params.id]);
 
     console.log(journals);
 
