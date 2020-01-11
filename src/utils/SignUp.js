@@ -49,7 +49,9 @@ const color = {
 const size ={
     fontSize: '20px'
 }
-  
+ 
+
+
 const SignUp = (props) => {
     const [user, setUser] = useState({
         username: "",
@@ -81,13 +83,14 @@ const SignUp = (props) => {
     <div>
             <StyleForm onSubmit={handleSignUpSubmit} >
                 <StyleInput
-                placeholder="Username"
+                    placeholder="Username"
                     type="text"
                     name="username"
                     value={user.username}
                     onChange={handleChanges}
                     required
                 />
+                
                 <StyleInput
                     placeholder="Password"
                     type="text"

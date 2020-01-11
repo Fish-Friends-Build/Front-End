@@ -22,6 +22,7 @@ margin: 1% auto;
      margin: 0 auto;
  `
 
+ 
 const FishingSpotsAPI = () => {
     const { FishingSpotsData, setFishingSpotsData } = useContext(FishingSpotsContext);
     const [searchTerm, setSearchTerm] = useState("");
@@ -85,7 +86,7 @@ const FishingSpotsAPI = () => {
                 <BorderDiv>
                     <ResultsContainer className='results'>
                         <Row>
-                        {FishingSpotsData.map(data => (
+                        {searchResults.map(data => (
                             <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
                         ))}
                         </Row>
