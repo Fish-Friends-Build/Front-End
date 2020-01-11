@@ -40,6 +40,9 @@ const StyleDiv = style.div`
         background: rgba(255, 255, 255, 0.2);
     }
     `
+    const margin = {
+        marginBottom: '1%',
+    }
 const accent = {
     border: 'thin solid #f11212'
 }
@@ -55,7 +58,7 @@ const FishingSpotsCard = ({ name, county, bestFish, access, pdf }) => {
     }
 
     return (
-        <Col sm='6' md='4' lg= '2'>
+        <Col sm='6' md='4' lg= '2' style={margin}>
         <StyleDiv>
             <div className="card-top">
                 <h1>Location: {name}</h1>
