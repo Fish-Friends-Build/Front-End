@@ -45,7 +45,7 @@ const JournalEntries = () => {
             />
           ))
         ) : (
-          <h1>No Entries Available</h1>
+          <h1 style={{ color: 'whitesmoke' }}>No Entries Available</h1>
         )}
       </div>
     </>

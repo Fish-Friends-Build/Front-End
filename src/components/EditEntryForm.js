@@ -19,9 +19,9 @@ background: rgba(0,0,0,0.7);
 `;
 
 const EditEntryForm = props => {
-	const { JournalEntriesData, setJournalEntriesData } = useContext(JournalEntriesContext);
-	let history = useHistory();
-
+  const { JournalEntriesData } = useContext(JournalEntriesContext);
+  
+  let history = useHistory();
 	const [localEntry, setLocalEntry] = useState([]);
 
 	const postId = parseInt(props.match.params.id);
