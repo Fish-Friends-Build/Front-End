@@ -45,8 +45,8 @@ const JournalEntriesCard = ({
         <Card.Description style={{color: '#eee'}}>Notes: {notes}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <p style={{ color: 'black' }}>
-          <Icon name="cuttlefish" color="black" />
+        <p style={{ color: '#eee' }}>
+          <Icon name="cuttlefish" color="white" />
           {numFishCaught} {fishType} Caught with {bait} at the {bankOrBoat} in{' '}
           {waterType}
         </p>
