@@ -92,7 +92,7 @@ const Login = (props) => {
                 />
                 <StyleInput
                     placeholder="Password"
-                    type="text"
+                    type="password"
                     name="password"
                     value={credentials.password}
                     onChange={handleChanges}
