@@ -14,19 +14,44 @@ const StyleForm = style.form`
   border-radius: 1px;
   background: rgba(255, 255, 255, .1);
   font-family: 'Abel', sans-serif;
-  color: #eeeeee
+  color: #eee
   background: rgba(0,0,0,0.7);
 `;
 
     const StyleInput = style.input`
     border: 1px solid #a9a9a9;
-    border-radius: 3px;
-    padding: 10px;
-    margin: 5px;
-    width: 150px;
+    border-radius: 4%;
+    padding: 1%;
+    margin: 2%;
+    width: 40%;
     box-sizing: border-box;
-    margin-top: 10px;
-  `;
+    margin-top: 1%;
+  `
+
+const Button = style.button`
+display: block;
+border: thin solid #12a0f1
+border-radius: 4%;
+background: #333333
+font-weight: 900;
+text-align: center;
+margin: 2% auto;
+color: #eee;
+transition: all 0.15s ease-in-out;
+&:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+`
+const color = {
+    border: 'thin solid #eee',
+}
+
+const size ={
+    fontSize: '20px'
+}
+ 
+
+
 const SignUp = (props) => {
     const [user, setUser] = useState({
         username: "",
@@ -58,13 +83,14 @@ const SignUp = (props) => {
     <div>
             <StyleForm onSubmit={handleSignUpSubmit} >
                 <StyleInput
-                placeholder="Username"
+                    placeholder="Username"
                     type="text"
                     name="username"
                     value={user.username}
                     onChange={handleChanges}
                     required
                 />
+                
                 <StyleInput
                     placeholder="Password"
                     type="text"
@@ -74,11 +100,11 @@ const SignUp = (props) => {
                     required
                 />
 
-                <button type="submit">Sign Up</button>
+                <Button type="submit" style={size}>Sign Up</Button>
             
             <div>
-                <p>Already have an account?</p>
-                <Link to="/login">Log In</Link>
+                <h5>Already have an account?</h5>
+                <Link to="/login" ><Button style={color}>Log In</Button></Link>
                 <Route exact path="/login" component={Login} />
             </div>
         </StyleForm>

@@ -4,6 +4,22 @@ import { Button, FormGroup, FormField, Label, Input } from 'semantic-ui-react';
 
 import { JournalPostContext } from '../contexts/JournalPostContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import style from 'styled-components';
+
+const StyleForm = style.form`
+display: flex;
+align-items: center;
+flex-flow: column;
+width: 25%;
+margin: 0 auto;
+padding: 2%;
+border: thin solid #8dba20;
+border-radius: 1px;
+background: rgba(255, 255, 255, .1);
+font-family: 'Abel', sans-serif;
+color: #eee
+background: rgba(0,0,0,0.7);
+`;
 
 const JournalPost = props => {
   const { JournalPostData, setJournalPostData } = useContext(JournalPostContext);
@@ -30,30 +46,31 @@ const JournalPost = props => {
   
   return (
     <>
+    <StyleForm onChange={handleChanges} onSubmit={handleSubmit}>
       <h3>{props.match.params.name}</h3>
-      <form onChange={handleChanges} onSubmit={handleSubmit}>
+      
       <FormField>
     
-        <FormGroup > 
-          <Label>Number Of Fish Caught
+        <FormGroup  style={{margin: '2%'}}> 
+          <Label style={{background: 'rgba(255,255,255,0.5)'}}>Number Of Fish Caught
           <Input  required type="number" name="numFishCaught" id="numFishCaught" />
           </Label>
         </FormGroup>
 
-        <FormGroup >
-          <Label>Date
+        <FormGroup  style={{margin: '2%'}}>
+          <Label style={{background: 'rgba(255,255,255,0.5)'}}>Date
           <Input required type="date" name="date" id="date" />
           </Label>
         </FormGroup>
 
-        <FormGroup >
-          <Label>Time of Day
+        <FormGroup style={{margin: '2%'}}>
+          <Label style={{background: 'rgba(255,255,255,0.5)'}}>Time of Day
           <Input required type="text" name="timeOfDay" id="timeOfDay" />
           </Label>
         </FormGroup>
 
-        <FormGroup>
-          <Label>Type Of Fish
+        <FormGroup style={{margin: '2%'}}>
+          <Label style={{background: 'rgba(255,255,255,0.5)'}}>Type Of Fish
           <Input
             type="text"
             name="fishType"
@@ -63,8 +80,8 @@ const JournalPost = props => {
           </Label>
         </FormGroup>
 
-        <FormGroup>
-          <Label>Type Of Bait
+        <FormGroup style={{margin: '2%'}}>
+          <Label style={{background: 'rgba(255,255,255,0.5)'}}>Type Of Bait
           <Input
             type="text"
             name="bait"
@@ -77,8 +94,8 @@ const JournalPost = props => {
 
         <FormField tag="fieldset">
 
-          <FormGroup   check> 
-            <Label  check> 
+          <FormGroup  style={{margin: '2%'}} check> 
+            <Label style={{background: 'rgba(255,255,255,0.5)'}} check> 
             <Input required type="radio" name="bankOrBoat" value="Bank" /> Bank 
             <br/>Or <br/>
             <Input type="radio" name="bankOrBoat" value="Boat" />Boat
@@ -86,8 +103,8 @@ const JournalPost = props => {
          </FormGroup>
           
 
-        <FormGroup  check>
-          <Label check>
+        <FormGroup style={{margin: '2%'}} check>
+          <Label style={{background: 'rgba(255,255,255,0.5)'}} check>
             <Input required type="radio" name="waterType" value="FreshWater" /> Fresh Water 
             <br/> Or <br/>
             <Input type="radio" name="waterType" value="SaltWater" />Salt Water
@@ -96,8 +113,8 @@ const JournalPost = props => {
         
         </FormField>
 
-        <FormGroup>
-          <Label>Session Notes...
+        <FormGroup style={{margin: '2%'}}>
+          <Label style={{background: 'rgba(255,255,255,0.5)'}}>Session Notes...
           <Input
             required 
             type="textarea"
@@ -107,9 +124,19 @@ const JournalPost = props => {
           /></Label>
         </FormGroup>
 
-        <Button>Submit</Button>
+        <Button style={{
+							border: "thin solid #12a0f1",
+							background: "#333333",
+							fontWeight: "900",
+							textAlign: "center",
+							color: "#eee",
+							margin: "4% auto",
+							height: "auto",
+							transition: "all 0.15s ease-in-out",
+						}}
+        >Submit</Button>
       </FormField>
-      </form>
+      </StyleForm>
     </>
   );
 };
