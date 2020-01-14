@@ -18,7 +18,7 @@ const StyleForm = style.form`
   background: rgba(0,0,0,0.7);
 `;
 
-    const StyleInput = style.input`
+const StyleInput = style.input`
     border: 1px solid #a9a9a9;
     border-radius: 4%;
     padding: 1%;
@@ -46,10 +46,10 @@ const color = {
     border: 'thin solid #eee',
 }
 
-const size ={
+const size = {
     fontSize: '20px'
 }
- 
+
 
 
 const SignUp = (props) => {
@@ -68,7 +68,7 @@ const SignUp = (props) => {
     const handleSignUpSubmit = e => {
         e.preventDefault();
         console.log("handleSignUpSubmit user to post with axios", user);
-        axios  
+        axios
             .post("https://fish-friends-api.herokuapp.com/api/auth/register", user)
             .then(sessionStorage.setItem('token', 'user'))
             .then(props.history.push('/'))
@@ -76,11 +76,11 @@ const SignUp = (props) => {
     };
 
 
-            
-        
-    
+
+
+
     return (
-    <div>
+        <div>
             <StyleForm onSubmit={handleSignUpSubmit} >
                 <StyleInput
                     placeholder="Username"
@@ -90,7 +90,7 @@ const SignUp = (props) => {
                     onChange={handleChanges}
                     required
                 />
-                
+
                 <StyleInput
                     placeholder="Password"
                     type="password"
@@ -101,14 +101,14 @@ const SignUp = (props) => {
                 />
 
                 <Button type="submit" style={size}>Sign Up</Button>
-            
-            <div>
-                <h5>Already have an account?</h5>
-                <Link to="/login" ><Button style={color}>Log In</Button></Link>
-                <Route exact path="/login" component={Login} />
-            </div>
-        </StyleForm>
-</div>
+
+                <div>
+                    <h5>Already have an account?</h5>
+                    <Link to="/login" ><Button style={color}>Log In</Button></Link>
+                    <Route exact path="/login" component={Login} />
+                </div>
+            </StyleForm>
+        </div>
     )
 
 }
