@@ -7,7 +7,7 @@ import style from 'styled-components';
 import { Row } from 'reactstrap';
 
 const BorderDiv = style.div`
-// border: groove thick #f11212;
+border: groove #f11212;
 border-radius: 10px;
 width: 98%;
 background: rgba(255,255,255,0.5);
