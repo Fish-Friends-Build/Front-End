@@ -7,7 +7,8 @@ import style from 'styled-components';
 import { Row } from 'reactstrap';
 
 const BorderDiv = style.div`
-border: groove thick #f11212;
+// border: groove thick #f11212;
+border-radius: 10px;
 width: 98%;
 background: rgba(255,255,255,0.5);
 margin: 1% auto;
@@ -71,24 +72,32 @@ const FishingSpotsAPI = () => {
     }, [searchTerm]);
 
     if (searchResults.length === 0) {
-        return (
-            <>
-                <section>
-                    <h3 style={{color: "white", marginBottom: "1.5%"}}>Search</h3>
-                    <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-                </section>
-
-                <BorderDiv>
-                    <ResultsContainer>
-                        <Row>
-                            {FishingSpotsData.map(data => (
-                                <FishingSpotsCard key={data.key} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-                            ))}
-                        </Row>
-                    </ResultsContainer>
-                </BorderDiv>
-            </>
-        )
+        if(FishingSpotsData.length === 0){
+            return (
+                <>
+                <h4 style={{size: "2rem", color: "white"}}>Loading . . .</h4>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <section>
+                        <h3 style={{color: "white", marginBottom: "1.5%"}}>Search</h3>
+                        <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+                    </section>
+    
+                    <BorderDiv>
+                        <ResultsContainer>
+                            <Row>
+                                {FishingSpotsData.map(data => (
+                                    <FishingSpotsCard key={data.key} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+                                ))}
+                            </Row>
+                        </ResultsContainer>
+                    </BorderDiv>
+                </>
+            )
+        }
     } else {
         return (
             <>
