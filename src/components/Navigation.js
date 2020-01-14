@@ -18,7 +18,7 @@ const NavBarBackground = style.div`
     align-items: center;
     width: 100%;
     height: 15vh;
-    margin-bottom: 10%;
+    margin-bottom: 7%;
     background-color: rgba(255, 255, 255, 0.1);
 `;
 
@@ -48,7 +48,7 @@ const Navigation = (props) => {
         <NavBarBackground>
             <NavBarShape>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <a style={{ textDecoration: "none", color: "black" }} href="https://fishfriendsapp.netlify.com/"><img src={logo} style={{ width: "auto", height: "100px" }} /></a>
+                    <a style={{ textDecoration: "none", color: "black" }} href="https://fishfriendsapp.netlify.com/"><img src={logo} alt="Fish Friends Logo" style={{ width: "auto", height: "100px" }} /></a>
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <Link to='/fishing-spots' style={{ textDecoration: "none" }}><Button>Find Fishing Spots</Button></Link>

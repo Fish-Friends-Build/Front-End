@@ -18,7 +18,7 @@ const StyleForm = style.form`
   background: rgba(0,0,0,0.7);
 `;
 
-    const StyleInput = style.input`
+const StyleInput = style.input`
     border: 1px solid #a9a9a9;
     border-radius: 4%;
     padding: 1%;
@@ -46,7 +46,7 @@ const color = {
     border: 'thin solid #eee',
 }
 
-const size ={
+const size = {
     fontSize: '20px'
 }
 
@@ -100,12 +100,12 @@ const Login = (props) => {
                 />
 
                 <Button type="submit" style={size}>Log In</Button>
-            
-            <div>
-                <h5>Don't have an account?</h5>
-                <Link to="/signup"><Button style={color}>Sign Up</Button></Link>
-                <Route exact path="/signup" component={SignUp}/>
-            </div>
+
+                <div>
+                    <h5>Don't have an account?</h5>
+                    <Link to="/signup"><Button style={color}>Sign Up</Button></Link>
+                    <Route exact path="/signup" component={SignUp} />
+                </div>
             </StyleForm>
         </div>
     )

@@ -7,13 +7,14 @@ import style from 'styled-components';
 import { Row } from 'reactstrap';
 
 const BorderDiv = style.div`
-border: groove thick #f11212;
+// border: groove thick #f11212;
+border-radius: 10px;
 width: 98%;
 background: rgba(255,255,255,0.5);
 margin: 1% auto;
 `
 
- const ResultsContainer = style.div`
+const ResultsContainer = style.div`
      max-width: 99%;
      display: flex;
      flex-wrap: wrap;
@@ -22,9 +23,10 @@ margin: 1% auto;
      margin: 0 auto;
  `
 
- 
+
 const FishingSpotsAPI = () => {
     const { FishingSpotsData, setFishingSpotsData } = useContext(FishingSpotsContext);
+    const [ fishingSpotsNoKey, setFishingSpotsNoKey ] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     //eslint-disable-next-line
     const [searchResults, setSearchResults] = useState(FishingSpotsData);
@@ -37,15 +39,28 @@ const FishingSpotsAPI = () => {
         axios
             .get('https://data.ny.gov/resource/jcxg-7gnm.json/')
             .then(response => {
-                console.log('API Is Here: ', response.data);
-                setFishingSpotsData(response.data);
+                setFishingSpotsNoKey(response.data);
             })
             .catch(error => {
                 console.log('Whoops go back, thats an error!', error);
             });
 
+
+
         // getSearch();
     }, []);
+
+    useEffect(() => {
+        let dataWithKey = []
+        for (let i = 0; i < fishingSpotsNoKey.length; i++) {
+            // console.log(FishingSpotsNoKey[i]);
+            dataWithKey.push({...fishingSpotsNoKey[i], key: i})
+        }
+        // console.log(dataWithKey);
+        setFishingSpotsData(dataWithKey);
+    }, [fishingSpotsNoKey, setFishingSpotsData])
+
+
 
     useEffect(() => {
         const results = FishingSpotsData.filter(stat => {
@@ -56,70 +71,53 @@ const FishingSpotsAPI = () => {
         //eslint-disable-next-line
     }, [searchTerm]);
 
-    // console.log(FishingSpotsData);
-
     if (searchResults.length === 0) {
-        return (
-            <>
-            <section>
-                <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-            </section>
-            
-                <BorderDiv>   
-                    <ResultsContainer>
-                        <Row>
-                        {FishingSpotsData.map(data => (
-                            <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-                        ))}
-                        </Row>
-                    </ResultsContainer>
-                </BorderDiv>
-            </>
-        )
+        if(FishingSpotsData.length === 0){
+            return (
+                <>
+                <h4 style={{size: "2rem", color: "white"}}>Loading . . .</h4>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <section>
+                        <h3 style={{color: "white", marginBottom: "1.5%"}}>Search</h3>
+                        <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+                    </section>
+    
+                    <BorderDiv>
+                        <ResultsContainer>
+                            <Row>
+                                {FishingSpotsData.map(data => (
+                                    <FishingSpotsCard key={data.key} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+                                ))}
+                            </Row>
+                        </ResultsContainer>
+                    </BorderDiv>
+                </>
+            )
+        }
     } else {
         return (
             <>
-            <section>
-                <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-            </section>
-            
+                <section>
+                    <h3 style={{color: "white", marginBottom: "1.5%"}}>Search</h3>
+                    <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
+                </section>
+
                 <BorderDiv>
                     <ResultsContainer className='results'>
                         <Row>
-                        {searchResults.map(data => (
-                            <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-                        ))}
+                            {searchResults.map(data => (
+                                <FishingSpotsCard key={data.key} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
+                            ))}
                         </Row>
                     </ResultsContainer>
                 </BorderDiv>
-            
+
             </>
         )
     }
-
-  // return (
-  //     <section>
-  //         <div>
-  //             <LocationSearchForm searchTerm={searchTerm} handleChange={handleChange} />
-  //             <BorderDiv>
-  //                 <ResultsContainer>
-  //                     {searchResults.map(data => (
-  //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-  //                     ))}
-  //                 </ResultsContainer>
-  //             </BorderDiv>
-  //         </div>
-
-  //         <div>
-  //             <BorderDiv>
-  //                 <ResultsContainer>
-  //                     {FishingSpotsData.map(data => (
-  //                         <FishingSpotsCard key={data} name={data.name} county={data.county} bestFish={data.fish_spec} access={data.public_acc} pdf={data.site_wl} />
-  //                     ))}
-  //                 </ResultsContainer>
-  //             </BorderDiv>
-  //         </div>
-  //     </section>
-  // );
 };
 export default FishingSpotsAPI;
