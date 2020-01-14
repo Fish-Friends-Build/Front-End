@@ -7,10 +7,10 @@ import {Col} from 'reactstrap';
 const StyleDiv = style.div`
     border: thin solid #8dba20;
     padding: 2%;
-    border-top-right-radius: 5%;
-    border-top-left-radius: 5%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     width: 100%;
-    margin: 1% auto;
+    margin: 1.5% auto 1%;
     align-items: center;
     text-align: center
     font-family: 'Abel', sans-serif;
@@ -29,7 +29,7 @@ const StyleDiv = style.div`
     const Button = style.button`
     display: block;
     border: thin solid #12a0f1
-    border-radius: 4%;
+    border-radius: 10px;
     background: #333333
     font-weight: 900;
     text-align: center;
